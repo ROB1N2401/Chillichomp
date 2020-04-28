@@ -718,7 +718,7 @@ MonoBehaviour:
   - {fileID: 3657128407250464550, guid: 2044936416047d446bdef50e19278f2e, type: 3}
   - {fileID: 3657128407250464550, guid: 184c6d6f7b1518844a5d93898ba2b4d5, type: 3}
   spawnPos_: {fileID: 1536516294}
-  respawnMinTime_: 1
+  respawnMinTime_: 2
   respawnMaxTime_: 2.5
 --- !u!20 &519420031
 Camera:
@@ -1242,6 +1242,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7dc992ae458de2e41a13acb08190b150, type: 3}
   - {fileID: 21300000, guid: f330e6fff72bb6f4bb2b6fb306fa16d9, type: 3}
   key_: 32
+  closemouth: 0
 --- !u!1 &1909585505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,7 +1314,7 @@ PrefabInstance:
     - target: {fileID: 3657128407250464550, guid: bdec329443de6e8428095866930a1cd6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7677391716705073664, guid: bdec329443de6e8428095866930a1cd6,
         type: 3}

@@ -34,4 +34,10 @@ public class Food : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        BoxCollider2D collider = GetComponent<BoxCollider2D>();
+        Gizmos.DrawWireCube(collider.transform.position, new Vector3(collider.size.x, collider.size.y, 0));
+    }
+
 }

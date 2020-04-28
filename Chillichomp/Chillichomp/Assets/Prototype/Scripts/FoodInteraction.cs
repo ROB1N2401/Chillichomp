@@ -60,9 +60,11 @@ public class FoodInteraction : MonoBehaviour
             OpenMouth();
             NullifyMultiplier();
             Invoke("CloseMouth", 0.5f);
+            closemouth++;
         }
     }
 
+    public int closemouth = 0;
     public void CloseMouth()
     {
         if (thermometerComponent_.currentLevel_ < 6)
@@ -71,6 +73,8 @@ public class FoodInteraction : MonoBehaviour
         }
         else 
             sr_.sprite = mouthSprites_[3];
+
+        closemouth--;
     }
 
     public void OpenMouth()
@@ -88,21 +92,25 @@ public class FoodInteraction : MonoBehaviour
         sr_.sprite = mouthSprites_[4];
     }
 
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        inZone_ = true;
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         //Debug.Log("FoodInZone");
-        if ((collision.gameObject.tag == "Food"))
-        {
-            inZone_ = true;
-        }
+        //if ((collision.gameObject.tag == "Food"))
+        //{
+        //    inZone_ = true;
+        //}
 
-        if ((collision.gameObject.tag == "Food") && (Input.GetKeyDown(key_) || Input.GetKeyUp(key_)))
+       // if ((collision.gameObject.tag == "Food") && (Input.GetKeyDown(key_) || Input.GetKeyUp(key_)))
+        if (inZone_ && (Input.GetKeyDown(key_) || Input.GetKeyUp(key_)))
         {
             OpenMouth();
             Invoke("Chew", 0.2f);
             Invoke("CloseMouth", 1f);
-
+            closemouth++;
             thermometerComponent_.IncreaseTemperature(collision.gameObject.GetComponent<Food>().spiciness_);
             IncreaseScore(collision.gameObject.GetComponent<Food>().points_);
             IncreaseMultiplier();
@@ -112,5 +120,20 @@ public class FoodInteraction : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         inZone_ = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        BoxCollider2D collider = GetComponent<BoxCollider2D>();
+        if(inZone_)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireCube(collider.transform.position, new Vector3(collider.size.x, collider.size.y, 0));
+        }
+        else 
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(collider.transform.position, new Vector3(collider.size.x, collider.size.y, 0));
+        }
     }
 }
