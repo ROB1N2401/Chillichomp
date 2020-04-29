@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Restart_Scene : MonoBehaviour
+public class RestartScene : MonoBehaviour
 {
     private Animation explosion;
     bool animation_is_played;
