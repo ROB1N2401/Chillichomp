@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Text_Reveal_Effect : MonoBehaviour
+public class TextRevealEffect : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text_mesh_pro_;
     public float reveal_time_ = 0.25f;
