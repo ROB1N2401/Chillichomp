@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Timer : MonoBehaviour
+public class Timer
 {
     public float targetTime_;
     public float currentTime_;
@@ -13,10 +13,18 @@ public class Timer : MonoBehaviour
         currentTime_ = 0.0f;
     }
 
-    public void Update()
+    public void Refresh()
+    {
+        currentTime_ = 0f;
+    }
+
+    public bool IsDone()
+    {
+        return (currentTime_ >= targetTime_);
+    }
+
+    public void UpdateTimer()
     {
         currentTime_ += Time.deltaTime;
     }
-
-    public void SetTime()
 }
