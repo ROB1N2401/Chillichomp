@@ -1314,7 +1314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac86f8c0fa816e44ac2e2d4818c7c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel_: 0
   allSprites_:
   - {fileID: 21300000, guid: ec702e02c8387564290c91592893e38f, type: 3}
   - {fileID: 21300000, guid: 3df62c1a0c0d763449cde088b8069317, type: 3}
@@ -1323,7 +1322,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ca1b04319965fca4091468ecefaaa360, type: 3}
   - {fileID: 21300000, guid: 2d24e01e26dc94945bcd655f576a87d5, type: 3}
   - {fileID: 21300000, guid: 811e72571ca55fb488030a66c190ef2b, type: 3}
-  - {fileID: 21300000, guid: c2b9ecb4b2ac1684ea7ada6a8fee9a23, type: 3}
+  - {fileID: 21300000, guid: 02c2a8f9d8b69ee4588f7bfd39cfc48c, type: 3}
   - {fileID: 21300000, guid: 2c43c43c70866f544aaea913817314c6, type: 3}
   overheatTime_: 3
 --- !u!1 &1846181660
