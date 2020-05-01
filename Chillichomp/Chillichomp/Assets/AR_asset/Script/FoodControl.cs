@@ -23,7 +23,6 @@ public class FoodControl : MonoBehaviour
         if (create)
         {
             Instantiate(Prefab[R]);
-            print("233333"+r);
             create = false;
         }
     }
