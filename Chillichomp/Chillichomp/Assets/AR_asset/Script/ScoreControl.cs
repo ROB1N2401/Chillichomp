@@ -11,7 +11,6 @@ public class ScoreControl : MonoBehaviour
     {
         Score = 0;
         Score_text.transform.position = new Vector3(540, 1950, 0);
-        print("asd"+Score_text.transform.position);
     }
 
 

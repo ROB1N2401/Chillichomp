@@ -41,20 +41,23 @@ public class FoodMovement : MonoBehaviour
                 if (this.gameObject.tag == "medium_f")
                 {
                     GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().Get_score(1);
+                    GameObject.Find("GameObjectControl").GetComponent<ThermometerControl>().add_level(1);
                 }
                 else if (this.gameObject.tag == "middle_f")
                 {
                     GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().Get_score(3);
+                    GameObject.Find("GameObjectControl").GetComponent<ThermometerControl>().add_level(3);
                 }
                 else if (this.gameObject.tag == "strong_f")
                 {
                     GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().Get_score(10);
+                    GameObject.Find("GameObjectControl").GetComponent<ThermometerControl>().add_level(7);
                 }
                 GameObject.Find("GameObjectControl").GetComponent<FoodControl>().create_food();
                 Destroy(this.gameObject);
             }
         }
-        if (transform.position.y > 1)
+        if (transform.position.y > 0.5f)
         {
             timer = 0;
             GameObject.Find("GameObjectControl").GetComponent<FoodControl>().create_food();

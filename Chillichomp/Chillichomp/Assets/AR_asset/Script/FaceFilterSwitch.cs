@@ -25,6 +25,7 @@
         private Mesh m_Mesh = null;
         private bool m_MeshInitialized = false;
 
+        public GameObject Filter;
         private bool Filter_switch=false;
         /// <summary>
         /// Gets or sets the ARCore AugmentedFace object that will be used to update the face mesh data.
@@ -99,23 +100,16 @@
                 m_MeshInitialized = true;
             }
 
-            GameObject.Find("FaceTexture").SetActive(Filter_switch);
-            //if (a1 < 1)
-            //{
-            //    open = true;
-            //    Mask.gameObject.SetActive(true);
-            //}
-            //else
-            //{
-            //    open = false;
-            //    Filter.GetComponent<UIPosition>().timer = -6;
-            //    //print(Mask.GetComponent<UIPosition>().timer);
-            //    Mask.gameObject.SetActive(false);
-            //}
+            //GameObject.Find("FaceTexture").SetActive(true);
+            Filter.gameObject.SetActive(Filter_switch);
         }
 
         public bool determine_mouth()
         {
+            if(Filter_switch)
+            {
+                return false;
+            }
             float a1 = m_MeshNormals[14].y - m_MeshNormals[13].y;
             float a2 = m_MeshNormals[87].y - m_MeshNormals[82].y;
             float a3 = m_MeshNormals[317].y - m_MeshNormals[312].y;
@@ -135,9 +129,9 @@
             return false;
         }
 
-        public void Open_face_filter()
+        public void Open_face_filter(bool a)
         {
-            Filter_switch = true;
+            Filter_switch = a;
         }
 
     }

@@ -15,11 +15,11 @@ public class FoodControl : MonoBehaviour
 
     private void Update()
     {
-        GameObject[] Prefab = new GameObject[3] { middle_f, middle_f, strong_f };
+        GameObject[] Prefab = new GameObject[3] { miduim_f, middle_f, strong_f };
 
         float r = Random.Range(0, 2.99f);
         int R = (int)r;
-
+        print("233"+R);
         if (create)
         {
             Instantiate(Prefab[R]);
