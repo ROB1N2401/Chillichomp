@@ -1,24 +1,4 @@
-//-----------------------------------------------------------------------
-// <copyright file="ARCoreAugmentedFaceMeshFilter.cs" company="Google">
-//
-// Copyright 2018 Google LLC. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// </copyright>
-//-----------------------------------------------------------------------
-
-namespace GoogleARCore.Examples.AugmentedFaces
+﻿namespace GoogleARCore.Examples.AugmentedFaces
 {
     using System.Collections.Generic;
     using GoogleARCore;
@@ -28,13 +8,12 @@ namespace GoogleARCore.Examples.AugmentedFaces
     /// Helper component to update face mesh data.
     /// </summary>
     [RequireComponent(typeof(MeshFilter))]
-    public class ARCoreAugmentedFaceMeshFilter : MonoBehaviour
+    public class FaceFilterSwitch : MonoBehaviour
     {
         /// <summary>
         /// If true, this component will update itself using the first AugmentedFace detected by ARCore.
         /// </summary>
         public bool AutoBind = false;
-
         private AugmentedFace m_AugmentedFace = null;
         private List<AugmentedFace> m_AugmentedFaceList = null;
 
@@ -46,6 +25,7 @@ namespace GoogleARCore.Examples.AugmentedFaces
         private Mesh m_Mesh = null;
         private bool m_MeshInitialized = false;
 
+        private bool Filter_switch=false;
         /// <summary>
         /// Gets or sets the ARCore AugmentedFace object that will be used to update the face mesh data.
         /// </summary>
@@ -78,19 +58,21 @@ namespace GoogleARCore.Examples.AugmentedFaces
         /// </summary>
         public void Update()
         {
-            if (AutoBind)
             {
-                m_AugmentedFaceList.Clear();
-                Session.GetTrackables<AugmentedFace>(m_AugmentedFaceList, TrackableQueryFilter.All);
-                if (m_AugmentedFaceList.Count != 0)
+                if (AutoBind)
                 {
-                    m_AugmentedFace = m_AugmentedFaceList[0];
+                    m_AugmentedFaceList.Clear();
+                    Session.GetTrackables<AugmentedFace>(m_AugmentedFaceList, TrackableQueryFilter.All);
+                    if (m_AugmentedFaceList.Count != 0)
+                    {
+                        m_AugmentedFace = m_AugmentedFaceList[0];
+                    }
                 }
-            }
 
-            if (m_AugmentedFace == null)
-            {
-                return;
+                if (m_AugmentedFace == null)
+                {
+                    return;
+                }
             }
 
             // Update game object position;
@@ -117,13 +99,46 @@ namespace GoogleARCore.Examples.AugmentedFaces
                 m_MeshInitialized = true;
             }
 
-            m_Mesh.Clear();
-            m_Mesh.SetVertices(m_MeshVertices);
-            m_Mesh.SetNormals(m_MeshNormals);
-            m_Mesh.SetTriangles(m_MeshIndices, 0);
-            m_Mesh.SetUVs(0, m_MeshUVs);
-            print(" PPOOP" + m_MeshNormals[13] + "  " + m_MeshNormals[14]);
-            m_Mesh.RecalculateBounds();
+            GameObject.Find("FaceTexture").SetActive(Filter_switch);
+            //if (a1 < 1)
+            //{
+            //    open = true;
+            //    Mask.gameObject.SetActive(true);
+            //}
+            //else
+            //{
+            //    open = false;
+            //    Filter.GetComponent<UIPosition>().timer = -6;
+            //    //print(Mask.GetComponent<UIPosition>().timer);
+            //    Mask.gameObject.SetActive(false);
+            //}
         }
+
+        public bool determine_mouth()
+        {
+            float a1 = m_MeshNormals[14].y - m_MeshNormals[13].y;
+            float a2 = m_MeshNormals[87].y - m_MeshNormals[82].y;
+            float a3 = m_MeshNormals[317].y - m_MeshNormals[312].y;
+            //if(a1<0.86 && a2<0.86)
+            //{
+            //    if(a3<0.86)
+            //    {
+            //        print("02538");
+            //        return true;
+            //    }
+            //}
+            if(a1<0.95)
+            {
+                print("02538");
+                return true;
+            }
+            return false;
+        }
+
+        public void Open_face_filter()
+        {
+            Filter_switch = true;
+        }
+
     }
 }

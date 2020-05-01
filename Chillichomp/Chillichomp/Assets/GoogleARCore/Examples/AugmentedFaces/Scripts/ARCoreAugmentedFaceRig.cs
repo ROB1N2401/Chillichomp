@@ -47,7 +47,7 @@ namespace GoogleARCore.Examples.AugmentedFaces
         private List<AugmentedFace> m_AugmentedFaceList = new List<AugmentedFace>();
         private Dictionary<AugmentedFaceRegion, Transform> m_RegionGameObjects =
             new Dictionary<AugmentedFaceRegion, Transform>();
-
+        private Vector3 Screen_position;
         /// <summary>
         /// Gets or sets the ARCore AugmentedFace object that will be used to update the face region.
         /// </summary>
@@ -169,8 +169,15 @@ namespace GoogleARCore.Examples.AugmentedFaces
                     Pose regionPose = m_AugmentedFace.GetRegionPose(region);
                     regionTransform.position = regionPose.position;
                     regionTransform.rotation = regionPose.rotation;
+                    Screen_position = regionPose.position;
+                    //print("asd"+ m_AugmentedFace.CenterPose.position+ regionPose.position);
                 }
             }
+        }
+
+        public void Send_screen_position(Vector3 Position)
+        {
+            Position = Screen_position;
         }
     }
 }
