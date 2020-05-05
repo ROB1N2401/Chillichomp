@@ -418,7 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 810026822}
   m_Layer: 0
-  m_Name: Background (Missing Prefab)
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

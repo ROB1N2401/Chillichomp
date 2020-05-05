@@ -21,9 +21,6 @@ public class ScoreControl : MonoBehaviour
 
     public void Get_score(int score)
     {
-        for(; score>0; score--)
-        {
-            Score++;
-        }
+        Score += score;
     }
 }

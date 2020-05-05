@@ -7,7 +7,15 @@ public class FoodMovement : MonoBehaviour
 {
     private float timer = 0;
     private int c = 0;
-    //Food prefab 
+    //value
+    public int medium_f_score = 1;
+    public int medium_f_pungency = 1;
+
+    public int middle_f_score = 3;
+    public int middle_f_pungency = 3;
+
+    public int strong_f_score = 10;
+    public int strong_f_pungency = 7;
 
     private void Start()
     {
@@ -16,23 +24,8 @@ public class FoodMovement : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        transform.position = new Vector3(0, timer-6, 8+timer*0.9f);
+        transform.position = new Vector3(0, timer-6, 8+timer*1.2f);
 
-        //if(timer>6)
-        //{
-        //    timer = 0;
-        //    Switch.GetComponent<FoodControl>().create_food();
-        //    Destroy(this.gameObject);
-        //}
-
-        //if (Switch.GetComponent<FaceFilterSwitch>().determine_mouth())
-        //{
-        //    timer = 0;
-        //    Switch.GetComponent<FoodControl>().timer = 5;
-        //    transform.position = new Vector3(0, -6, 8);
-        //    Switch.GetComponent<ScoreControl>().Get_score(5);
-        //    Destroy(this.gameObject);
-        //}
         if (transform.position.y > -3.5)
         {
             if (GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().determine_mouth())
@@ -40,18 +33,18 @@ public class FoodMovement : MonoBehaviour
                 timer = 0;
                 if (this.gameObject.tag == "medium_f")
                 {
-                    GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().Get_score(1);
-                    GameObject.Find("GameObjectControl").GetComponent<ThermometerControl>().add_level(1);
+                    GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().Get_score(medium_f_score);
+                    GameObject.Find("GameObjectControl").GetComponent<ThermometerControl>().add_level(medium_f_pungency);
                 }
                 else if (this.gameObject.tag == "middle_f")
                 {
-                    GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().Get_score(3);
-                    GameObject.Find("GameObjectControl").GetComponent<ThermometerControl>().add_level(3);
+                    GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().Get_score(middle_f_score);
+                    GameObject.Find("GameObjectControl").GetComponent<ThermometerControl>().add_level(middle_f_pungency);
                 }
                 else if (this.gameObject.tag == "strong_f")
                 {
-                    GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().Get_score(10);
-                    GameObject.Find("GameObjectControl").GetComponent<ThermometerControl>().add_level(7);
+                    GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().Get_score(strong_f_score);
+                    GameObject.Find("GameObjectControl").GetComponent<ThermometerControl>().add_level(strong_f_pungency);
                 }
                 GameObject.Find("GameObjectControl").GetComponent<FoodControl>().create_food();
                 Destroy(this.gameObject);

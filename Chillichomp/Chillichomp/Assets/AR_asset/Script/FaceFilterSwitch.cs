@@ -99,8 +99,8 @@
                 // Only update mesh indices and uvs once as they don't change every frame.
                 m_MeshInitialized = true;
             }
+            print("0258361479"+m_MeshNormals[13]);
 
-            //GameObject.Find("FaceTexture").SetActive(true);
             Filter.gameObject.SetActive(Filter_switch);
         }
 

@@ -5,10 +5,19 @@ using UnityEngine;
 
 public class ThermometerControl : MonoBehaviour
 {
-    public GameObject Thermometer;
+    public GameObject T_level0_image;
+    public GameObject T_level1_image;
+    public GameObject T_level2_image;
+    public GameObject T_level3_image;
+    public GameObject T_level4_image;
+    public GameObject T_level5_image;
+    public GameObject T_level6_image;
+    public GameObject T_level7_image;
+
     private int level = 0;
     private float timer = 0;
     GameObject[] list = new GameObject[8];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +28,7 @@ public class ThermometerControl : MonoBehaviour
         list[4] = GameObject.Find("Thermometer4");
         list[5] = GameObject.Find("Thermometer5");
         list[6] = GameObject.Find("Thermometer6");
-        list[7] = GameObject.Find("Thermometer7");
+        list[7] = GameObject.Find("Thermometer7"); 
         for(int a=0;a<8;a++)
         {
             list[a].SetActive(false);
