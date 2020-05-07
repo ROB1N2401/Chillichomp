@@ -80,13 +80,13 @@
             transform.position = m_AugmentedFace.CenterPose.position;
             transform.rotation = m_AugmentedFace.CenterPose.rotation;
 
-            _UpdateMesh();
+            UpdateMesh();
         }
 
         /// <summary>
         /// Update mesh with a face mesh vertices, texture coordinates and indices.
         /// </summary>
-        private void _UpdateMesh()
+        private void UpdateMesh()
         {
             m_AugmentedFace.GetVertices(m_MeshVertices);
             m_AugmentedFace.GetNormals(m_MeshNormals);
@@ -104,7 +104,7 @@
             Filter.gameObject.SetActive(Filter_switch);
         }
 
-        public bool determine_mouth()
+        public bool DetermineMouth()
         {
             if(Filter_switch)
             {
@@ -129,7 +129,7 @@
             return false;
         }
 
-        public void Open_face_filter(bool a)
+        public void SetFaceFilterState(bool a)
         {
             Filter_switch = a;
         }

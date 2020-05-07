@@ -593,12 +593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76e8256cdc6a29b4e82edd7b07a9d723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miduim_f: {fileID: 3199532923684542581, guid: 86d45e2b11406ee4bb33e8d8398ed4fb,
-    type: 3}
-  middle_f: {fileID: 2971652712997862109, guid: ab6df460c42e93844bdfe5f09cf8e799,
-    type: 3}
-  strong_f: {fileID: 2515975219633970897, guid: e1775af1dc333084a9ac182286684c3e,
-    type: 3}
+  foodPrefab_: []
 --- !u!114 &293005457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,7 +606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1820c89e7928049a1a9e7a703dc227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Score_text: {fileID: 361507383}
+  scoreText: {fileID: 0}
 --- !u!114 &293005458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -624,7 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90356e4827491084ea1fcd24f79b766c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Thermometer: {fileID: 1401642409}
+  allSprites_: []
 --- !u!1 &361507383
 GameObject:
   m_ObjectHideFlags: 0
