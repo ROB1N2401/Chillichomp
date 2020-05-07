@@ -122,7 +122,11 @@ namespace GoogleARCore.Examples.AugmentedFaces
             m_Mesh.SetNormals(m_MeshNormals);
             m_Mesh.SetTriangles(m_MeshIndices, 0);
             m_Mesh.SetUVs(0, m_MeshUVs);
-            print(" PPOOP" + m_MeshNormals[13] + "  " + m_MeshNormals[14]);
+
+
+            print("shake" + m_MeshVertices[14]);
+
+
             m_Mesh.RecalculateBounds();
         }
     }

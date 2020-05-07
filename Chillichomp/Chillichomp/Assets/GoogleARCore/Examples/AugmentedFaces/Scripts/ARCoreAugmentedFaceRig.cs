@@ -170,7 +170,6 @@ namespace GoogleARCore.Examples.AugmentedFaces
                     regionTransform.position = regionPose.position;
                     regionTransform.rotation = regionPose.rotation;
                     Screen_position = regionPose.position;
-                    //print("asd"+ m_AugmentedFace.CenterPose.position+ regionPose.position);
                 }
             }
         }

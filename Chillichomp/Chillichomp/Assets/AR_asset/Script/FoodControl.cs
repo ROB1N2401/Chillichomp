@@ -17,6 +17,7 @@ public class FoodControl : MonoBehaviour
 
         float r = Random.Range(0, 2.99f);
         int R = (int)r;
+        print("20563"+R);
         if (create)
         {
             Instantiate(Prefab[R]);

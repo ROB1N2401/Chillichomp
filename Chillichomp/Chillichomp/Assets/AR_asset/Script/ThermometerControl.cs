@@ -5,47 +5,19 @@ using UnityEngine;
 
 public class ThermometerControl : MonoBehaviour
 {
-    public GameObject T_level0_image;
-    public GameObject T_level1_image;
-    public GameObject T_level2_image;
-    public GameObject T_level3_image;
-    public GameObject T_level4_image;
-    public GameObject T_level5_image;
-    public GameObject T_level6_image;
-    public GameObject T_level7_image;
 
     private int level = 0;
     private float timer = 0;
-    GameObject[] list = new GameObject[8];
-
+    [SerializeField] private List<Sprite> Thermometer_sprite;
     // Start is called before the first frame update
     void Start()
     {
-        list[0] = GameObject.Find("Thermometer0");
-        list[1] = GameObject.Find("Thermometer1");
-        list[2] = GameObject.Find("Thermometer2");
-        list[3] = GameObject.Find("Thermometer3");
-        list[4] = GameObject.Find("Thermometer4");
-        list[5] = GameObject.Find("Thermometer5");
-        list[6] = GameObject.Find("Thermometer6");
-        list[7] = GameObject.Find("Thermometer7"); 
-        for(int a=0;a<8;a++)
-        {
-            list[a].SetActive(false);
-            list[a].transform.position= new Vector3(2f,3.8f,8);
-        }
+        transform.position= new Vector3(2f,3.8f,8);
     }
 
     // Update is called once per frame
     void Update()
     {
-        {
-            for (int a = 0; a < 8; a++)
-            {
-                list[a].SetActive(false);
-            }
-            list[level].SetActive(true);
-        }
         if(level==7)
         {
             GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().Open_face_filter(true);
