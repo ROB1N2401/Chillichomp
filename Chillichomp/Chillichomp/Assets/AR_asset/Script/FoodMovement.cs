@@ -19,7 +19,7 @@ public class FoodMovement : MonoBehaviour
     void Update()
     {
         timer_ += Time.deltaTime;
-        transform.position = new Vector3(0, timer_ - 6, 8 + timer_ * 1.2f);
+        transform.position = new Vector3(0, timer_ - 6, 8 + timer_ * 1.3f);
 
         if (transform.position.y > -3.5)
         {
@@ -28,7 +28,7 @@ public class FoodMovement : MonoBehaviour
                 timer_ = 0;
 
                 GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().IncreaseScore(score_);
-                GameObject.Find("GameObjectControl").GetComponent<ThermometerControl>().AddLevel(spiciness_);
+                GameObject.Find("Thermomter").GetComponent<ThermometerControl>().AddLevel(spiciness_);
                 GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
 
                 Destroy(this.gameObject);

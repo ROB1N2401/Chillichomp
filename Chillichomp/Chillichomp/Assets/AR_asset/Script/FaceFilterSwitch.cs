@@ -99,8 +99,6 @@
                 // Only update mesh indices and uvs once as they don't change every frame.
                 m_MeshInitialized = true;
             }
-            print("0258361479"+m_MeshNormals[13]);
-
             Filter.gameObject.SetActive(Filter_switch);
         }
 
@@ -111,19 +109,9 @@
                 return false;
             }
             float a1 = m_MeshNormals[14].y - m_MeshNormals[13].y;
-            float a2 = m_MeshNormals[87].y - m_MeshNormals[82].y;
-            float a3 = m_MeshNormals[317].y - m_MeshNormals[312].y;
-            //if(a1<0.86 && a2<0.86)
-            //{
-            //    if(a3<0.86)
-            //    {
-            //        print("02538");
-            //        return true;
-            //    }
-            //}
-            if(a1<0.95)
+            print("mouth_date"+a1);
+            if(a1<0.97)
             {
-                print("02538");
                 return true;
             }
             return false;
