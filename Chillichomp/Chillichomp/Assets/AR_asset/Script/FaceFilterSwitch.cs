@@ -138,7 +138,8 @@
             head_direction = m_AugmentedFace.CenterPose.rotation.eulerAngles;
             //print("head_direction " + head_direction);
             timer += Time.deltaTime;
-            if(head_direction.y>25 && head_direction.y<60)
+            shake_heads = false;
+            if (head_direction.y>25 && head_direction.y<60)
             {
                 print("shake_heads" + shake_heads);
                 head_move_right = true;
@@ -150,7 +151,7 @@
                 {
                     shake_heads = true;
                     head_move_right = false;
-                    StartCoroutine(initialization());
+                    //StartCoroutine(initialization());
                 }
             }
         }
