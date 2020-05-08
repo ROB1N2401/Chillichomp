@@ -9,6 +9,7 @@ public class ThermometerControl : MonoBehaviour
     private float timer;
     private SpriteRenderer sr_;
     [SerializeField] private List<Sprite> allSprites_; 
+    //storing sprites of different states, where 0 is the lowest temperature and 3 is overheating
 
     private void Awake()
     {
@@ -26,7 +27,7 @@ public class ThermometerControl : MonoBehaviour
         }
         if(level>7)
         {
-            sr_.sprite = allSprites_[8];
+            sr_.sprite = allSprites_[7];
             GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(true);
             timer += Time.deltaTime;
             if(timer >= 7)
