@@ -25,9 +25,9 @@ public class ThermometerControl : MonoBehaviour
         {
             sr_.sprite = allSprites_[level];
         }
-        if(level>7)
+        if(level > 7)
         {
-            sr_.sprite = allSprites_[7];
+            sr_.sprite = allSprites_[8];
             GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(true);
             timer += Time.deltaTime;
             if(timer >= 7)

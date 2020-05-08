@@ -1,5 +1,6 @@
 ﻿namespace GoogleARCore.Examples.AugmentedFaces
 {
+    using System.Collections;
     using System.Collections.Generic;
     using GoogleARCore;
     using UnityEngine;
@@ -24,9 +25,18 @@
         private List<int> m_MeshIndices = new List<int>();
         private Mesh m_Mesh = null;
         private bool m_MeshInitialized = false;
-
+        //Face filter gameobject
         public GameObject Filter;
-        private bool Filter_switch=false;
+        //face filter switch
+        private bool Filter_switch = false;
+        //Timer that detects the shake interval
+        private float timer = 0;
+        private float interval = 0;
+        //head direction
+        private Vector3 head_direction;
+        //detects
+        private bool head_move_right = false;
+        private bool shake_heads = false;
         /// <summary>
         /// Gets or sets the ARCore AugmentedFace object that will be used to update the face mesh data.
         /// </summary>
@@ -99,28 +109,62 @@
                 // Only update mesh indices and uvs once as they don't change every frame.
                 m_MeshInitialized = true;
             }
+
+            DetectHeadShaking();
             Filter.gameObject.SetActive(Filter_switch);
         }
 
         public bool DetermineMouth()
         {
-            if(Filter_switch)
+            if (Filter_switch)
             {
                 return false;
             }
             float a1 = m_MeshNormals[14].y - m_MeshNormals[13].y;
-            print("mouth_date"+a1);
-            if(a1<0.97)
+            //float a2 = m_MeshNormals[87].y - m_MeshNormals[82].y;
+            //float a3 = m_MeshNormals[317].y - m_MeshNormals[312].y;
+            if (a1 < 0.95)
             {
                 return true;
             }
             return false;
         }
-
         public void SetFaceFilterState(bool a)
         {
             Filter_switch = a;
         }
+        public void DetectHeadShaking()
+        {
+            head_direction = m_AugmentedFace.CenterPose.rotation.eulerAngles;
+            //print("head_direction " + head_direction);
+            timer += Time.deltaTime;
+            shake_heads = false;
+            if (head_direction.y > 25 && head_direction.y < 60)
+            {
+                print("shake_heads" + shake_heads);
+                head_move_right = true;
+                interval = timer;
+            }
+            else if (head_move_right && (timer - interval) < 0.5f)
+            {
+                if (head_direction.y < 338 && head_direction.y > 300)
+                {
+                    shake_heads = true;
+                    head_move_right = false;
+                    //StartCoroutine(initialization());
+                }
+            }
+        }
 
+        //IEnumerator Initialization()
+        //{
+        //    yield return new WaitForSeconds(0.5f);
+        //    shake_heads = false;
+        //}
+
+        public bool DetermineShakeHands()
+        {
+            return shake_heads;
+        }
     }
 }
