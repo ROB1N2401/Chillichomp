@@ -129,10 +129,12 @@
             }
             return false;
         }
+
         public void SetFaceFilterState(bool a)
         {
             Filter_switch = a;
         }
+
         public void DetectHeadShaking()
         {
             head_direction = m_AugmentedFace.CenterPose.rotation.eulerAngles;
@@ -162,7 +164,7 @@
         //    shake_heads = false;
         //}
 
-        public bool DetermineShakeHands()
+        public bool DetermineShakeHeads()
         {
             return shake_heads;
         }

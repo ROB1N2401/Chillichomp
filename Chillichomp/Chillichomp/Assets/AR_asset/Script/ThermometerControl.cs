@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ThermometerControl : MonoBehaviour
 {
-    private int level;
+    internal int level;
     private float timer;
     private SpriteRenderer sr_;
     [SerializeField] private List<Sprite> allSprites_; 
