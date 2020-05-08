@@ -1,5 +1,6 @@
 ﻿namespace GoogleARCore.Examples.AugmentedFaces
 {
+    using System.Collections;
     using System.Collections.Generic;
     using GoogleARCore;
     using UnityEngine;
@@ -24,12 +25,18 @@
         private List<int> m_MeshIndices = new List<int>();
         private Mesh m_Mesh = null;
         private bool m_MeshInitialized = false;
-
+        //Face filter gameobject
         public GameObject Filter;
+        //face filter switch
         private bool Filter_switch=false;
-        private bool head_move_left=false;
-        private bool shake_heads=false;
+        //Timer that detects the shake interval
         private float timer = 0;
+        private float interval = 0;
+        //head direction
+        private Vector3 head_direction;
+        //detects
+        private bool head_move_right=false;
+        private bool shake_heads=false;
         /// <summary>
         /// Gets or sets the ARCore AugmentedFace object that will be used to update the face mesh data.
         /// </summary>
@@ -103,7 +110,7 @@
                 m_MeshInitialized = true;
             }
 
-
+            detection_shake_head();
             Filter.gameObject.SetActive(Filter_switch);
         }
 
@@ -126,19 +133,35 @@
         {
             Filter_switch = a;
         }
-
-        public void determine_shake_head()
+        public void detection_shake_head()
         {
-            Vector3 head_direcction = m_AugmentedFace.CenterPose.rotation.eulerAngles;
-            if(head_direcction.y>40)
+            head_direction = m_AugmentedFace.CenterPose.rotation.eulerAngles;
+            //print("head_direction " + head_direction);
+            timer += Time.deltaTime;
+            if(head_direction.y>25 && head_direction.y<60)
             {
-                head_move_left = true;
+                print("shake_heads" + shake_heads);
+                head_move_right = true;
+                interval = timer;
             }
-            if(head_move_left )
+            else if(head_move_right && (timer - interval) < 0.5f)
             {
-
+                if (head_direction.y<338 && head_direction.y>300)
+                {
+                    shake_heads = true;
+                    head_move_right = false;
+                    StartCoroutine(initialization());
+                }
             }
         }
-
+        IEnumerator initialization()
+        {
+            yield return new WaitForSeconds(0.5f);
+            shake_heads = false;
+        }
+        public bool determine_shake_heads()
+        {
+            return shake_heads;
+        }
     }
 }

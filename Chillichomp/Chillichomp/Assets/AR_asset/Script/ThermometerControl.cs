@@ -18,17 +18,18 @@ public class ThermometerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(level==7)
+        if (level == 7)
         {
             GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().Open_face_filter(true);
             timer += Time.deltaTime;
-            if(timer>=7)
+            if (timer >= 7)
             {
                 GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().Open_face_filter(false);
                 timer = 0;
                 level = 0;
             }
         }
+        gameObject.GetComponent<SpriteRenderer>().sprite = Thermometer_sprite[level];
     }
 
     public void add_level(int a)
