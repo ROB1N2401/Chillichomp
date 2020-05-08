@@ -12,19 +12,44 @@ public class ThermometerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position= new Vector3(2f,3.8f,8);
+    }
+    private int level;
+    private float timer;
+    private SpriteRenderer sr_;
+    [SerializeField] private List<Sprite> allSprites_; 
+    //storing sprites of different states, where 0 is the lowest temperature and 3 is overheating
+
+    private void Awake()
+    {
+        level = 0;
+        timer = 0f;
+        sr_ = GetComponent<SpriteRenderer>();
+        GetComponent<Transform>().position = new Vector3(2f, 3.8f, 8);
+
     }
 
-    // Update is called once per frame
     void Update()
     {
+
         if (level == 7)
+
+        if(0 <= level && level <= 7)
         {
-            GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().Open_face_filter(true);
+            sr_.sprite = allSprites_[level];
+        }
+        if(level>7)
+
+        {
+            sr_.sprite = allSprites_[7];
+            GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(true);
             timer += Time.deltaTime;
+
             if (timer >= 7)
+
+            if(timer >= 7)
+
             {
-                GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().Open_face_filter(false);
+                GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(false);
                 timer = 0;
                 level = 0;
             }
@@ -32,19 +57,15 @@ public class ThermometerControl : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sprite = Thermometer_sprite[level];
     }
 
-    public void add_level(int a)
+    public void AddLevel(int a)
     {
         level = level + a;
-        if(level>7)
-        {
-            level = 7;
-        }
     }
 
-    public void lose_level(int a)
+    public void LoseLevel(int a)
     {
         level = level - a;
-        if(level<0)
+        if(level < 0)
         {
             level = 0;
         }

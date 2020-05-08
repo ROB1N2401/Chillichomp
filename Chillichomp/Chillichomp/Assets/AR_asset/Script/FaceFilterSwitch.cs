@@ -90,13 +90,11 @@
             transform.position = m_AugmentedFace.CenterPose.position;
             transform.rotation = m_AugmentedFace.CenterPose.rotation;
 
-            _UpdateMesh();
         }
 
         /// <summary>
         /// Update mesh with a face mesh vertices, texture coordinates and indices.
         /// </summary>
-        private void _UpdateMesh()
         {
             m_AugmentedFace.GetVertices(m_MeshVertices);
             m_AugmentedFace.GetNormals(m_MeshNormals);
@@ -110,26 +108,34 @@
                 m_MeshInitialized = true;
             }
 
+
             detection_shake_head();
+
             Filter.gameObject.SetActive(Filter_switch);
         }
 
-        public bool determine_mouth()
+        public bool DetermineMouth()
         {
             if(Filter_switch)
             {
                 return false;
             }
             float a1 = m_MeshNormals[14].y - m_MeshNormals[13].y;
+
             //float a2 = m_MeshNormals[87].y - m_MeshNormals[82].y;
             //float a3 = m_MeshNormals[317].y - m_MeshNormals[312].y;
             if(a1<0.95)
+
+            print("mouth_date"+a1);
+            if(a1<0.97)
+
             {
                 return true;
             }
             return false;
         }
-        public void Open_face_filter(bool a)
+
+        public void SetFaceFilterState(bool a)
         {
             Filter_switch = a;
         }
