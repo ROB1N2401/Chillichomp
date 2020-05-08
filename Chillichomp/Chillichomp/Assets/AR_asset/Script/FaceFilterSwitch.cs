@@ -90,11 +90,13 @@
             transform.position = m_AugmentedFace.CenterPose.position;
             transform.rotation = m_AugmentedFace.CenterPose.rotation;
 
+            UpdateMesh();
         }
 
         /// <summary>
         /// Update mesh with a face mesh vertices, texture coordinates and indices.
         /// </summary>
+        private void UpdateMesh()
         {
             m_AugmentedFace.GetVertices(m_MeshVertices);
             m_AugmentedFace.GetNormals(m_MeshNormals);

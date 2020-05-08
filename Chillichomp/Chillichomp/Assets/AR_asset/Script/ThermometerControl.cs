@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class ThermometerControl : MonoBehaviour
 {
-
     private int level = 0;
     private float timer = 0;
     [SerializeField] private List<Sprite> Thermometer_sprite;
     // Start is called before the first frame update
     void Start()
     {
+        transform.position = new Vector3(2f, 3.8f, 8);
     }
     private int level;
     private float timer;
