@@ -14,6 +14,7 @@ public class ThermometerControl : MonoBehaviour
         transform.position = new Vector3(2f, 3.8f, 8);
     }
     private int level;
+    internal int level;
     private float timer;
     private SpriteRenderer sr_;
     [SerializeField] private List<Sprite> allSprites_; 
@@ -36,11 +37,12 @@ public class ThermometerControl : MonoBehaviour
         if(0 <= level && level <= 7)
         {
             sr_.sprite = allSprites_[level];
+            GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(false);
         }
         if(level>7)
-
+        if(level > 7)
         {
-            sr_.sprite = allSprites_[7];
+            sr_.sprite = allSprites_[8];
             GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(true);
             timer += Time.deltaTime;
 
@@ -60,6 +62,10 @@ public class ThermometerControl : MonoBehaviour
     public void AddLevel(int a)
     {
         level = level + a;
+        if(level>7)
+        {
+            level = 8;
+        }
     }
 
     public void LoseLevel(int a)
