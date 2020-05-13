@@ -5,7 +5,7 @@ using TMPro;
 
 public class TextRevealEffect : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _textMeshProUGUI = null;
+    private TextMeshProUGUI _textMeshProUGUI = null;
     private char[] _letters = { };
 
     public float RevealTime;
@@ -14,13 +14,13 @@ public class TextRevealEffect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _textMeshProUGUI = GetComponent<TextMeshProUGUI>();
         _letters = Text.ToCharArray();
         StartCoroutine(SpawnText());
     }
 
     IEnumerator SpawnText()
     {
-        //_textMeshProUGUI = GetComponent<TextMeshProUGUI>();
         // ?? gameObject.AddComponent<TextMeshPro>();
         for (int i = 0; i < _letters.Length; i++)
         {
