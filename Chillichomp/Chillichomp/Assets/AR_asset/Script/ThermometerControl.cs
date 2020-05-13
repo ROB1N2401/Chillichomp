@@ -24,6 +24,7 @@ public class ThermometerControl : MonoBehaviour
         if(0 <= level && level <= 7)
         {
             sr_.sprite = allSprites_[level];
+            GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(false);
         }
         if(level > 7)
         {
@@ -42,6 +43,10 @@ public class ThermometerControl : MonoBehaviour
     public void AddLevel(int a)
     {
         level = level + a;
+        if(level>7)
+        {
+            level = 8;
+        }
     }
 
     public void LoseLevel(int a)
