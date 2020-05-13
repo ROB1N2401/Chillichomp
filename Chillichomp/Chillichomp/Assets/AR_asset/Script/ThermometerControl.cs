@@ -5,51 +5,51 @@ using UnityEngine;
 
 public class ThermometerControl : MonoBehaviour
 {
-    private int level;
-    private float timer;
-    private SpriteRenderer sr_;
-    [SerializeField] private List<Sprite> allSprites_; 
+    private int _level;
+    private float _timer;
+    private SpriteRenderer _sr;
+    [SerializeField] private List<Sprite> _allSprites; 
     //storing sprites of different states, where 0 is the lowest temperature and 3 is overheating
 
     private void Awake()
     {
-        level = 0;
-        timer = 0f;
-        sr_ = GetComponent<SpriteRenderer>();
+        _level = 0;
+        _timer = 0f;
+        _sr = GetComponent<SpriteRenderer>();
         GetComponent<Transform>().position = new Vector3(2f, 3.8f, 8);
     }
 
     void Update()
     {
-        if(0 <= level && level <= 7)
+        if(0 <= _level && _level <= 7)
         {
-            sr_.sprite = allSprites_[level];
+            _sr.sprite = _allSprites[_level];
         }
-        if(level > 7)
+        if(_level > 7)
         {
-            sr_.sprite = allSprites_[8];
+            _sr.sprite = _allSprites[8];
             GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(true);
-            timer += Time.deltaTime;
-            if(timer >= 7)
+            _timer += Time.deltaTime;
+            if(_timer >= 7)
             {
                 GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(false);
-                timer = 0;
-                level = 0;
+                _timer = 0;
+                _level = 0;
             }
         }
     }
 
     public void AddLevel(int a)
     {
-        level = level + a;
+        _level = _level + a;
     }
 
     public void LoseLevel(int a)
     {
-        level = level - a;
-        if(level < 0)
+        _level = _level - a;
+        if(_level < 0)
         {
-            level = 0;
+            _level = 0;
         }
     }
 

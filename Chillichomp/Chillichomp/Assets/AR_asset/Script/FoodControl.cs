@@ -6,16 +6,16 @@ using UnityEngine.UI;
 public class FoodControl : MonoBehaviour
 {
     //Food prefab 
-    [SerializeField] private List<GameObject> foodPrefabs_;
+    [SerializeField] private List<GameObject> _foodPrefabs;
 
     private bool create = true;
     private void Update()
     {
-        int R = Random.Range(0, foodPrefabs_.Count);
+        int r = Random.Range(0, _foodPrefabs.Count);
         
         if (create)
         {
-            Instantiate(foodPrefabs_[R]);
+            Instantiate(_foodPrefabs[r]);
             create = false;
         }
     }

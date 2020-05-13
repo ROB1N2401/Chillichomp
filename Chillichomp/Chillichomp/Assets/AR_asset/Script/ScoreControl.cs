@@ -4,22 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ScoreControl : MonoBehaviour
 {
-    public Text scoreText;
-    private int score;
+    public Text ScoreText;
+
+    private int _score;
 
     private void Awake()
     {
-        score = 0;
-        scoreText.transform.position = new Vector3(540, 1950, 0);
+        _score = 0;
+        ScoreText.transform.position = new Vector3(540, 1950, 0);
     }
 
     void Update()
     {
-        scoreText.text = score.ToString();
+        ScoreText.text = _score.ToString();
     }
 
-    public void IncreaseScore(int score_in)
+    public void IncreaseScore(int scoreIn)
     {
-        score += score_in;
+        _score += scoreIn;
     }
 }

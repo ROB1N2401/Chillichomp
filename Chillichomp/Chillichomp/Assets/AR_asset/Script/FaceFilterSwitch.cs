@@ -28,19 +28,19 @@
         //Face filter gameobject
         public GameObject Filter;
         //face filter switch
-        private bool Filter_switch = false;
+        private bool _filterSwitch = false;
         //Timer that detects the shake interval
-        private float timer = 0;
-        private float interval = 0;
+        private float _timer = 0;
+        private float _interval = 0;
         //head direction
-        private Vector3 head_direction;
+        private Vector3 _headDirection;
         //detects
-        private bool head_move_right = false;
-        private bool shake_heads = false;
+        private bool _headMoveRight = false;
+        private bool _shakeHeads = false;
         /// <summary>
         /// Gets or sets the ARCore AugmentedFace object that will be used to update the face mesh data.
         /// </summary>
-        public AugmentedFace AumgnetedFace
+        public AugmentedFace AugmentedFace
         {
             get
             {
@@ -111,12 +111,12 @@
             }
 
             DetectHeadShaking();
-            Filter.gameObject.SetActive(Filter_switch);
+            Filter.gameObject.SetActive(_filterSwitch);
         }
 
         public bool DetermineMouth()
         {
-            if (Filter_switch)
+            if (_filterSwitch)
             {
                 return false;
             }
@@ -131,26 +131,26 @@
         }
         public void SetFaceFilterState(bool a)
         {
-            Filter_switch = a;
+            _filterSwitch = a;
         }
         public void DetectHeadShaking()
         {
-            head_direction = m_AugmentedFace.CenterPose.rotation.eulerAngles;
+            _headDirection = m_AugmentedFace.CenterPose.rotation.eulerAngles;
             //print("head_direction " + head_direction);
-            timer += Time.deltaTime;
-            shake_heads = false;
-            if (head_direction.y > 25 && head_direction.y < 60)
+            _timer += Time.deltaTime;
+            _shakeHeads = false;
+            if (_headDirection.y > 25 && _headDirection.y < 60)
             {
-                print("shake_heads" + shake_heads);
-                head_move_right = true;
-                interval = timer;
+                print("shake_heads" + _shakeHeads);
+                _headMoveRight = true;
+                _interval = _timer;
             }
-            else if (head_move_right && (timer - interval) < 0.5f)
+            else if (_headMoveRight && (_timer - _interval) < 0.5f)
             {
-                if (head_direction.y < 338 && head_direction.y > 300)
+                if (_headDirection.y < 338 && _headDirection.y > 300)
                 {
-                    shake_heads = true;
-                    head_move_right = false;
+                    _shakeHeads = true;
+                    _headMoveRight = false;
                     //StartCoroutine(initialization());
                 }
             }
@@ -164,7 +164,7 @@
 
         public bool DetermineShakeHands()
         {
-            return shake_heads;
+            return _shakeHeads;
         }
     }
 }

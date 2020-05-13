@@ -182,8 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6322ab51e026b8243bc8e141bb41c8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spiciness_: 3
-  score_: 3
+  Spiciness: 1
+  Score: 1
 --- !u!1 &8675960532677803572
 GameObject:
   m_ObjectHideFlags: 0
