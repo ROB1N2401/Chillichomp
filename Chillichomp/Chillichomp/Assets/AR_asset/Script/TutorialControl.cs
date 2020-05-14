@@ -14,7 +14,9 @@ public class TutorialControl : MonoBehaviour
     private int _currentText = 0;
 
     private void Awake()
-    { 
+    {
+        _buttonTextTMP.text = "Next";
+
         if (_text != null)
         {
             _tutorialTextTMP.text = _text[_currentText];
@@ -39,6 +41,7 @@ public class TutorialControl : MonoBehaviour
         else
         {
             _currentText = 0;
+            _buttonTextTMP.text = "Next";
             gameObject.SetActive(false);
             //Destroy(gameObject);
         }
