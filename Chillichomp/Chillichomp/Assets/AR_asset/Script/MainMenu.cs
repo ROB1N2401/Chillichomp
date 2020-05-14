@@ -7,13 +7,8 @@ public class MainMenu : MonoBehaviour
 {
    public void PlayGame ()
    {
-        SceneManager.LoadScene("AR_prototype");
+        SceneManager.LoadScene("AR_Prototype");
    }
-
-    //public void StartCredits()
-    //{
-    //    SceneManager.LoadScene("CreditsScene");
-    //}
 
     public void QuitGame ()
     {

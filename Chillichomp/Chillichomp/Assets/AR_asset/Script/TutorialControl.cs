@@ -6,9 +6,11 @@ using TMPro;
 
 public class TutorialControl : MonoBehaviour
 {
-    [SerializeField] [TextArea] private List<string> _text = new List<string>(); //list designated for storing all tutorial explanation texts
+    [SerializeField] [TextArea (14, 10)] private List<string> _text = new List<string>(); //list designated for storing all tutorial explanation texts
     [SerializeField] private TextMeshProUGUI _tutorialTextTMP = null;
     [SerializeField] private TextMeshProUGUI _buttonTextTMP = null;
+    [SerializeField] private Image _imageComponent = null;
+    [SerializeField] private List<Sprite> _sprites = new List<Sprite>();
     private int _currentText = 0;
 
     private void Awake()
@@ -36,6 +38,7 @@ public class TutorialControl : MonoBehaviour
         }
         else
         {
+            _currentText = 0;
             gameObject.SetActive(false);
             //Destroy(gameObject);
         }
