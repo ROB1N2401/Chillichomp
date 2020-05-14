@@ -133,6 +133,10 @@
         public void SetFaceFilterState(bool a)
         {
             Filter_switch = a;
+            //if(a==true)
+            //{
+            //    GameObject.Find("Audio Source").GetComponent<AudioControl>().HitRoof();
+            //}
         }
 
         public void DetectHeadShaking()

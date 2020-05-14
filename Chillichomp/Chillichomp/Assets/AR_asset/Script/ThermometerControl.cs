@@ -42,10 +42,16 @@ public class ThermometerControl : MonoBehaviour
 
     public void AddLevel(int a)
     {
+        GameObject.Find("Audio Source").GetComponent<AudioControl>().IncreaseScore();
         level = level + a;
         if(level>7)
         {
+            GameObject.Find("Audio Source").GetComponent<AudioControl>().HitRoof();
             level = 8;
+        }
+        if(level==6)
+        {
+            GameObject.Find("Audio Source").GetComponent<AudioControl>().Warn();
         }
     }
 

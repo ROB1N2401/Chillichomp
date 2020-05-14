@@ -21,5 +21,6 @@ public class ScoreControl : MonoBehaviour
     public void IncreaseScore(int score_in)
     {
         score += score_in;
+        GameObject.Find("Audio Source").GetComponent<AudioControl>().EatFood();
     }
 }

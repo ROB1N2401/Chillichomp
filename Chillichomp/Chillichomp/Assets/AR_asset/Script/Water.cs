@@ -40,10 +40,7 @@ public class Water : MonoBehaviour
     }
 
     void Update()
-    {
-        print("MaskPosition" + darkMask_.transform.position+ 
-            Camera.main.WorldToScreenPoint(new Vector3(1.55f, 1f, 7)));
-        
+    {   
         bool cooldownIsComplete = (Time.time > nextReadyTime_);
         textComponent_.text = glassAmount_.ToString();
         //faceFilterSwitch_.DetectHeadShaking();
@@ -63,6 +60,7 @@ public class Water : MonoBehaviour
 
     public void Drink()
     {
+        GameObject.Find("Audio Source").GetComponent<AudioControl>().DrinkWater();
         cooldownTimeLeft_ = cooldownDuration_;
         nextReadyTime_ = Time.time + cooldownDuration_;
         thermometer_.LoseLevel(pointsDecrease_); 
