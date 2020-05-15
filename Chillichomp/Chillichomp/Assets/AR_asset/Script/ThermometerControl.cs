@@ -24,6 +24,7 @@ public class ThermometerControl : MonoBehaviour
         if(0 <= _level && _level <= 7)
         {
             _sr.sprite = _allSprites[_level];
+            GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(false);
         }
         if(_level > 7)
         {
@@ -42,6 +43,16 @@ public class ThermometerControl : MonoBehaviour
     public void AddLevel(int a)
     {
         _level = _level + a;
+        GameObject.Find("Audio Source").GetComponent<AudioControl>().IncreaseScore();
+        if(_level>7)
+        {
+            GameObject.Find("Audio Source").GetComponent<AudioControl>().HitRoof();
+            _level = 8;
+        }
+        if(_level==7)
+        {
+            GameObject.Find("Audio Source").GetComponent<AudioControl>().Warn();
+        }
     }
 
     public void LoseLevel(int a)
@@ -51,6 +62,7 @@ public class ThermometerControl : MonoBehaviour
         {
             _level = 0;
         }
+        _timer = 0;
     }
 
 }

@@ -42,8 +42,17 @@ public class TutorialControl : MonoBehaviour
         {
             _currentText = 0;
             _buttonTextTMP.text = "Next";
+            _tutorialTextTMP.text = _text[0];
             gameObject.SetActive(false);
             //Destroy(gameObject);
         }
     }
+    //public void Update()
+    //{
+    //    print("check"+_currentText);
+    //    if(_currentText==0)
+    //    {
+    //        print(_text[0]);
+    //    }
+    //}
 }

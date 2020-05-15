@@ -34,6 +34,7 @@ public class Countdown : MonoBehaviour
             { 
                 GameObject f = Instantiate(Victory) as GameObject;
                 f.transform.position = Camera.main.transform.position;
+                GameObject.Find("Audio Source").GetComponent<AudioControl>().Final();
                 _instantiateVictoryCondition = false;
             }
 

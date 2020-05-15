@@ -129,25 +129,30 @@
             }
             return false;
         }
+
         public void SetFaceFilterState(bool a)
         {
             _filterSwitch = a;
+            //if(a==true)
+            //{
+            //    GameObject.Find("Audio Source").GetComponent<AudioControl>().HitRoof();
+            //}
         }
+
         public void DetectHeadShaking()
         {
             _headDirection = m_AugmentedFace.CenterPose.rotation.eulerAngles;
-            //print("head_direction " + head_direction);
+            //print("head_direction " + _headDirection);
             _timer += Time.deltaTime;
             _shakeHeads = false;
             if (_headDirection.y > 25 && _headDirection.y < 60)
             {
-                print("shake_heads" + _shakeHeads);
                 _headMoveRight = true;
                 _interval = _timer;
             }
             else if (_headMoveRight && (_timer - _interval) < 0.5f)
             {
-                if (_headDirection.y < 338 && _headDirection.y > 300)
+                if (_headDirection.y < 345 && _headDirection.y > 300)
                 {
                     _shakeHeads = true;
                     _headMoveRight = false;
@@ -162,7 +167,7 @@
         //    shake_heads = false;
         //}
 
-        public bool DetermineShakeHands()
+        public bool DetermineShakeHeads()
         {
             return _shakeHeads;
         }

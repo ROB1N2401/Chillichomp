@@ -34,7 +34,7 @@ public class FoodMovement : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-        if (transform.position.y > 0.5f)
+        if (transform.position.y > 0.2f)
         {
             _timer = 0;
             GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
