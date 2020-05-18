@@ -15,7 +15,6 @@ public class Water : MonoBehaviour
     [SerializeField] private ThermometerControl thermometer_;
     [SerializeField] private GoogleARCore.Examples.AugmentedFaces.FaceFilterSwitch faceFilterSwitch_;
     [SerializeField] private TextMeshProUGUI textComponent_;
-    [SerializeField] private Image darkMask_;
 
 
     //this is your object that you want to have the UI element hovering over
@@ -28,7 +27,6 @@ public class Water : MonoBehaviour
     void Awake()
     {
         this.transform.position = new Vector3(1.5f, 1.1f, 6);
-        darkMask_.transform.position = new Vector3(130, 1380.9f, 0);
         faceFilterSwitch_ = GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>();
         //faceFilterSwitch_ = FindObjectOfType<GoogleARCore.Examples.AugmentedFaces.FaceFilterSwitch>();
         nextReadyTime_ = 0f;
@@ -37,7 +35,6 @@ public class Water : MonoBehaviour
     void Start()
     {
         textComponent_.text = glassAmount_.ToString();
-        darkMask_.fillAmount = 0;
     }
 
     void Update()
@@ -71,6 +68,6 @@ public class Water : MonoBehaviour
     private void Cooldown() //displays visual information about the cooldown and countdowns cd
     {
         cooldownTimeLeft_ -= Time.deltaTime;
-        darkMask_.fillAmount = (cooldownTimeLeft_ / cooldownDuration_);
+        //darkMask_.fillAmount = (cooldownTimeLeft_ / cooldownDuration_);
     }
 }

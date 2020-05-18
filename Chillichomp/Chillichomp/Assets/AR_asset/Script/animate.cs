@@ -26,7 +26,6 @@ public class animate : MonoBehaviour
         {
             timer = 0;
             GameObject.Find("FaceTexture").GetComponent<MeshRenderer>().material = Filter[current_filter];
-            print("running" + current_filter);
             current_filter++;
             if(current_filter==filter_number)
             {

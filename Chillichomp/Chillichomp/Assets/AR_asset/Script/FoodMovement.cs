@@ -18,7 +18,6 @@ public class FoodMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        print("position  "+this.transform.position.y);
         _timer += Time.deltaTime;
         transform.position = new Vector3(0, _timer - 6, 8 + _timer * 1.3f);
 

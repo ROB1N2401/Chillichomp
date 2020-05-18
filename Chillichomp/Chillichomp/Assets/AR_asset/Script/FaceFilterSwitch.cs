@@ -116,7 +116,7 @@
 
         public bool DetermineMouth()
         {
-            if (_filterSwitch)
+            if (GameObject.Find("Thermomter").GetComponent<ThermometerControl>().CheckHitRoof())
             {
                 return false;
             }
@@ -133,10 +133,6 @@
         public void SetFaceFilterState(bool a)
         {
             _filterSwitch = a;
-            //if(a==true)
-            //{
-            //    GameObject.Find("Audio Source").GetComponent<AudioControl>().HitRoof();
-            //}
         }
 
         public void DetectHeadShaking()
@@ -166,7 +162,6 @@
         //    yield return new WaitForSeconds(0.5f);
         //    shake_heads = false;
         //}
-
         public bool DetermineShakeHeads()
         {
             return _shakeHeads;

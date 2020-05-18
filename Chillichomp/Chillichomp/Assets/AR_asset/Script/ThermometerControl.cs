@@ -21,21 +21,23 @@ public class ThermometerControl : MonoBehaviour
 
     void Update()
     {
-        if(0 <= _level && _level <= 7)
+        _sr.sprite = _allSprites[_level];
+        if(0 <= _level && _level <= 5)
         {
-            _sr.sprite = _allSprites[_level];
             GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(false);
+        }
+        else
+        {
+            GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(true);
         }
         if(_level > 7)
         {
-            _sr.sprite = _allSprites[8];
-            GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(true);
             _timer += Time.deltaTime;
             if(_timer >= 7)
             {
                 GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(false);
                 _timer = 0;
-                _level = 0;
+                _level = 3;
             }
         }
     }
@@ -49,7 +51,7 @@ public class ThermometerControl : MonoBehaviour
             GameObject.Find("Audio Source").GetComponent<AudioControl>().HitRoof();
             _level = 8;
         }
-        if(_level==7)
+        else if(_level>5)
         {
             GameObject.Find("Audio Source").GetComponent<AudioControl>().Warn();
         }
@@ -65,4 +67,12 @@ public class ThermometerControl : MonoBehaviour
         _timer = 0;
     }
 
+    public bool CheckHitRoof()
+    {
+        if(_level>7)
+        {
+            return true;
+        }
+        return false;
+    }
 }

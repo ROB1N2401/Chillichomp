@@ -14,12 +14,14 @@ public class Countdown : MonoBehaviour
     public TextMeshProUGUI Text;
     public GameObject Victory;
 
+    [SerializeField] private GameObject _EndMenu;
     [SerializeField] private UnityEvent _disableControls;
     private bool _instantiateVictoryCondition = true;
 
     void Start()
     {
         Text.text = StartingTime.ToString();
+        _EndMenu.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -41,17 +43,19 @@ public class Countdown : MonoBehaviour
                 f.transform.position = Camera.main.transform.position;
                 GameObject.Find("Audio Source").GetComponent<AudioControl>().Final();
                 _instantiateVictoryCondition = false;
+                StartCoroutine(RestartGame(f));
             }
 
-            _disableControls.Invoke();
+            //_disableControls.Invoke();
 
-            StartCoroutine(RestartGame());
         }
     }
 
-    IEnumerator RestartGame()
+    IEnumerator RestartGame(GameObject Text)
     {
         yield return new WaitForSeconds(4f);
-        SceneManager.LoadScene(SceneName);
+        Destroy(Text);
+        Time.timeScale = 0f;
+        _EndMenu.gameObject.SetActive(true);
     }
 }
