@@ -16,12 +16,13 @@ public class FoodMovement : MonoBehaviour
         transform.position = new Vector3(0, _timer - 7, 9);
     }
 
-    void Update()
+    private void FixedUpdate()
     {
+        print("position  "+this.transform.position.y);
         _timer += Time.deltaTime;
         transform.position = new Vector3(0, _timer - 6, 8 + _timer * 1.3f);
 
-        if (transform.position.y > -3.5)
+        if (transform.position.y > -3)
         {
             if (GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().DetermineMouth())
             {
@@ -34,11 +35,36 @@ public class FoodMovement : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-        if (transform.position.y > 0.2f)
+        if (transform.position.y > -1.7f)
         {
             _timer = 0;
             GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
             Destroy(this.gameObject);
         }
     }
+    //void Update()
+    //{
+    //    _timer += Time.deltaTime;
+    //    transform.position = new Vector3(0, _timer - 6, 8 + _timer * 1.3f);
+
+    //    if (transform.position.y > -3.5)
+    //    {
+    //        if (GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().DetermineMouth())
+    //        {
+    //            _timer = 0;
+
+    //            GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().IncreaseScore(Score);
+    //            GameObject.Find("Thermomter").GetComponent<ThermometerControl>().AddLevel(Spiciness);
+    //            GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
+
+    //            Destroy(this.gameObject);
+    //        }
+    //    }
+    //    if (transform.position.y > 0.2f)
+    //    {
+    //        _timer = 0;
+    //        GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
+    //        Destroy(this.gameObject);
+    //    }
+    //}
 }
