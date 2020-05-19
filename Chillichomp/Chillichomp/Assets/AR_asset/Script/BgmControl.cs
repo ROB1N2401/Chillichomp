@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class BgmControl : MonoBehaviour
 {
-    private AudioSource _souce;
+    private AudioSource _souce1;
+    private AudioSource _souce2;
     private void Start()
     {
-        _souce = this.GetComponent<AudioSource>();
+        _souce1 = this.GetComponent<AudioSource>();
+        _souce2 = GameObject.Find("Audio Source").GetComponent<AudioSource>();
     }
     public void Stop()
     {
-        _souce.Pause();
+        _souce1.Pause();
+        _souce2.Pause();
     }
 
     public void Resume()
     {
-        _souce.Play();
+        _souce1.Play();
+        _souce2.Play();
     }
 }
