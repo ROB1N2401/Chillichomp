@@ -44,15 +44,20 @@ public class TutorialControl : MonoBehaviour
             _buttonTextTMP.text = "Close";
         }
 
-        if (_currentText == 3)
+        if (_currentText == 2)
         {
             _showImage = true;
             _imageComponent.sprite = _sprites[0];
         }
-        else if (_currentText == 4)
+        else if (_currentText == 3)
         {
             _showImage = true;
             _imageComponent.sprite = _sprites[1];
+        }
+        else if (_currentText == 4)
+        {
+            _showImage = true;
+            _imageComponent.sprite = _sprites[2];
         }
 
         if (_currentText <= _text.Count - 1)
