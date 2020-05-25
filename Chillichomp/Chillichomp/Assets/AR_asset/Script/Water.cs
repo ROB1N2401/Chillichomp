@@ -7,10 +7,11 @@ using GoogleARCore.Examples.AugmentedFaces;
 
 public class Water : MonoBehaviour
 {
+    public int glassAmount_;
+
     private float cooldownTimeLeft_;
     private float nextReadyTime_;
     [SerializeField] private float cooldownDuration_;
-    [SerializeField] private int glassAmount_;
     [SerializeField] private int pointsDecrease_;
     [SerializeField] private ThermometerControl thermometer_;
     [SerializeField] private GoogleARCore.Examples.AugmentedFaces.FaceFilterSwitch faceFilterSwitch_;

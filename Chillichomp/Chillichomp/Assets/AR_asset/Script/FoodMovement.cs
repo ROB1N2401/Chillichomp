@@ -10,6 +10,7 @@ public class FoodMovement : MonoBehaviour
 
     public int Spiciness;
     public int Score;
+    internal int PlatesEaten = 0;
 
     void Start()
     {
@@ -30,6 +31,8 @@ public class FoodMovement : MonoBehaviour
                 GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().IncreaseScore(Score);
                 GameObject.Find("Thermomter").GetComponent<ThermometerControl>().AddLevel(Spiciness);
                 GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
+
+                PlatesEaten += 1;
 
                 Destroy(this.gameObject);
             }
