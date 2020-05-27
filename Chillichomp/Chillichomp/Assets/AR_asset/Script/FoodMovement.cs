@@ -28,7 +28,7 @@ public class FoodMovement : MonoBehaviour
                 _timer = 0;
 
                 GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().IncreaseScore(Score);
-                GameObject.Find("Thermomter").GetComponent<ThermometerControl>().AddLevel(Spiciness);
+                GameObject.Find("GameObjectControl").GetComponent<ThermometerControl>().AddLevel(Spiciness);
                 GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
 
                 Destroy(this.gameObject);

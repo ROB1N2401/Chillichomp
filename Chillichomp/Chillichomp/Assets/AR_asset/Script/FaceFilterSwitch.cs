@@ -37,6 +37,8 @@
         //detects
         private bool _headMoveRight = false;
         private bool _shakeHeads = false;
+        //head position
+        public Pose HeadPose;
         /// <summary>
         /// Gets or sets the ARCore AugmentedFace object that will be used to update the face mesh data.
         /// </summary>
@@ -109,14 +111,14 @@
                 // Only update mesh indices and uvs once as they don't change every frame.
                 m_MeshInitialized = true;
             }
-
+            HeadPose = m_AugmentedFace.CenterPose;
             DetectHeadShaking();
             Filter.gameObject.SetActive(_filterSwitch);
         }
 
         public bool DetermineMouth()
         {
-            if (GameObject.Find("Thermomter").GetComponent<ThermometerControl>().CheckHitRoof())
+            if (GameObject.Find("GameObjectControl").GetComponent<ThermometerControl>().CheckHitRoof())
             {
                 return false;
             }

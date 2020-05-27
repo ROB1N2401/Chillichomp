@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using GoogleARCore.Examples.AugmentedFaces;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ThermometerControl : MonoBehaviour
 {
     private int _level;
     private float _timer;
-    private SpriteRenderer _sr;
+    private Image _im;
     [SerializeField] private List<Sprite> _allSprites; 
     //storing sprites of different states, where 0 is the lowest temperature and 3 is overheating
 
@@ -15,13 +16,12 @@ public class ThermometerControl : MonoBehaviour
     {
         _level = 0;
         _timer = 0f;
-        _sr = GetComponent<SpriteRenderer>();
-        GetComponent<Transform>().position = new Vector3(2f, 3.8f, 8);
+        _im = GameObject.Find("Thermomter").GetComponent<Image>();
     }
 
     void Update()
     {
-        _sr.sprite = _allSprites[_level];
+        _im.sprite = _allSprites[_level];
         if(0 <= _level && _level <= 5)
         {
             GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(false);

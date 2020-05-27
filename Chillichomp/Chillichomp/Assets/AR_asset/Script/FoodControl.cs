@@ -12,7 +12,7 @@ public class FoodControl : MonoBehaviour
     [SerializeField] private int _strongFoodRate;
 
     private int[] _foodCreateRate;
-    private bool create = true;
+    private bool create = false;
 
     private void Start()
     {
@@ -49,5 +49,4 @@ public class FoodControl : MonoBehaviour
         }
         return 0;
     }
-
 }
