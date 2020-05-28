@@ -32,7 +32,8 @@ public class FoodMovement : MonoBehaviour
                 GameObject.Find("Thermomter").GetComponent<ThermometerControl>().AddLevel(Spiciness);
                 GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
 
-                PlatesEaten += 1;
+                TutorialManager tutorialManagerComponent = FindObjectOfType<TutorialManager>();
+                tutorialManagerComponent.PlatesEaten++;
 
                 Destroy(this.gameObject);
             }

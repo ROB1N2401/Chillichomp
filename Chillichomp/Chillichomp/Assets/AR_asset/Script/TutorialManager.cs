@@ -9,19 +9,23 @@ using TMPro;
 public class TutorialManager : MonoBehaviour
 {
     internal bool TutorialSpecialState; //is set to true after reaching a certain stage of true; it is used in FoodControl.cs in order to spawn only hot food for the time being
+    internal int PlatesEaten;
     
     [SerializeField] private List<Sprite> _boxes = new List<Sprite>(); //list designated for storing all tutorial explanation texts
     [SerializeField] private List<GameObject> _arrows = new List<GameObject>(); //list for storing all arrows
     [SerializeField] private GameObject _tutorialWindow = null;
     [SerializeField] private GameObject _headOutline = null;
     [SerializeField] private float _headOutlineShowcaseTime = 0f;
+    private FoodMovement _foodMovementComponent = null;
     private Image _imageComponent = null;
     private int _currentBox = 0;
     private bool _isTrue = false; //boolean variable that indicates whether is the tutoral box enabled or disabled
 
     private void Awake()
     {
+        PlatesEaten = 0;
         TutorialSpecialState = false;
+        _foodMovementComponent = FindObjectOfType<FoodMovement>();
         _imageComponent = _tutorialWindow.GetComponent<Image>();
         _imageComponent.sprite = _boxes[_currentBox];
     }
@@ -43,9 +47,8 @@ public class TutorialManager : MonoBehaviour
         else if (_currentBox == 2 && !_isTrue)
         {
             Debug.Log("TutorialManager: current condition is 2");
-            FoodMovement foodMovementComponent = FindObjectOfType<FoodMovement>();
-            Debug.Log("Plates eaten: " + foodMovementComponent.PlatesEaten);
-            if (foodMovementComponent.PlatesEaten >= 2)
+            Debug.Log("Plates eaten: " + PlatesEaten);
+            if (PlatesEaten >= 2)
             {
                 SwitchBool();
             }
@@ -58,8 +61,8 @@ public class TutorialManager : MonoBehaviour
         else if (_currentBox == 3 && !_isTrue)
         {
             Debug.Log("TutorialManager: current condition is 4");
-            FoodMovement foodMovementComponent = FindObjectOfType<FoodMovement>();
-            if (foodMovementComponent.PlatesEaten >= 4)
+            Debug.Log("Plates eaten: " + PlatesEaten);
+            if (PlatesEaten >= 4)
             {
                 SwitchBool();
             }
