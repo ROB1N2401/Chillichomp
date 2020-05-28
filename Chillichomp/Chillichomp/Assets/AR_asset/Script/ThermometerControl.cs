@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class ThermometerControl : MonoBehaviour
 {
-    private int _level;
+    internal int _level;
+
     private float _timer;
     private Image _im;
     [SerializeField] private List<Sprite> _allSprites; 
@@ -74,5 +75,15 @@ public class ThermometerControl : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void MaximizeLevel()
+    {
+        _level = 7;
+    }
+
+    public void NullifyLevel()
+    {
+        _level = 0;
     }
 }

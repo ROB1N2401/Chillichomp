@@ -5,12 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 public class FoodMovement : MonoBehaviour
 {
-    [SerializeField] private float _foodSpeed;
-    [SerializeField] private int _spiciness;
-    [SerializeField] private int _score;
-    [SerializeField] private List<GameObject> _failAnimation;
+    //[SerializeField] private List<Sprite> allSprites_;
     private float _timer = 0;
 
+    public int Spiciness;
+    public int Score;
+    internal int PlatesEaten = 0;
 
     void Start()
     {
@@ -20,39 +20,27 @@ public class FoodMovement : MonoBehaviour
     private void FixedUpdate()
     {
         _timer += Time.deltaTime;
-        transform.position = new Vector3(0, _timer*_foodSpeed - 6, 8 + _timer * 1.3f);
+        transform.position = new Vector3(0, _timer - 6, 8 + _timer * 1.3f);
 
-        if (transform.position.y > -3.5f)
+        if (transform.position.y > -3)
         {
             if (GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().DetermineMouth())
             {
                 _timer = 0;
 
-                GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().IncreaseScore(_score);
-                GameObject.Find("GameObjectControl").GetComponent<ThermometerControl>().AddLevel(_spiciness);
+                GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().IncreaseScore(Score);
+                GameObject.Find("Thermomter").GetComponent<ThermometerControl>().AddLevel(Spiciness);
                 GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
+
+                TutorialManager tutorialManagerComponent = FindObjectOfType<TutorialManager>();
+                tutorialManagerComponent.PlatesEaten++;
 
                 Destroy(this.gameObject);
             }
         }
-        if (transform.position.y > -2.25f)
+        if (transform.position.y > -1.7f)
         {
             _timer = 0;
-            if(gameObject.tag=="medium_f")
-            {
-                _failAnimation[0].transform.position = new Vector3(0, -2F, 6.5f);
-                Instantiate(_failAnimation[0]);
-            }
-            if (gameObject.tag == "middle_f")
-            {
-                _failAnimation[1].transform.position = new Vector3(0, -2F, 6.5f);
-                Instantiate(_failAnimation[1]);
-            }
-            if (gameObject.tag == "strong_f")
-            {
-                _failAnimation[2].transform.position = new Vector3(0, -2F, 6.5f);
-                Instantiate(_failAnimation[2]);
-            }
             GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
             Destroy(this.gameObject);
         }
