@@ -37,11 +37,14 @@ public class TutorialManager : MonoBehaviour
 
         if (_currentBox == 1 && _isTrue)
         {
+            Debug.Log("TutorialManager: current condition is 1");
             _arrows[0].SetActive(true);
         }
         else if (_currentBox == 2 && !_isTrue)
         {
+            Debug.Log("TutorialManager: current condition is 2");
             FoodMovement foodMovementComponent = FindObjectOfType<FoodMovement>();
+            Debug.Log("Plates eaten: " + foodMovementComponent.PlatesEaten);
             if (foodMovementComponent.PlatesEaten >= 2)
             {
                 SwitchBool();
@@ -49,10 +52,12 @@ public class TutorialManager : MonoBehaviour
         }
         else if (_currentBox == 2 && _isTrue)
         {
+            Debug.Log("TutorialManager: current condition is 3");
             _arrows[1].SetActive(true);
         }
         else if (_currentBox == 3 && !_isTrue)
         {
+            Debug.Log("TutorialManager: current condition is 4");
             FoodMovement foodMovementComponent = FindObjectOfType<FoodMovement>();
             if (foodMovementComponent.PlatesEaten >= 4)
             {
@@ -61,10 +66,12 @@ public class TutorialManager : MonoBehaviour
         }
         else if (_currentBox == 3 && _isTrue)
         {
+            Debug.Log("TutorialManager: current condition is 5");
             _arrows[2].SetActive(true);
         }
         else if (_currentBox == 4 && !_isTrue)
         {
+            Debug.Log("TutorialManager: current condition is 6");
             Water waterComponent = FindObjectOfType<Water>();
             if (waterComponent.glassAmount_ < 3)
             {
@@ -73,6 +80,8 @@ public class TutorialManager : MonoBehaviour
         }
         else if (_currentBox == 5 && !_isTrue)
         {
+
+            Debug.Log("TutorialManager: current condition is 7"); 
             ThermometerControl thermometerControlComponent = FindObjectOfType<ThermometerControl>();
             if (thermometerControlComponent._level > 7)
             {
