@@ -15,11 +15,12 @@ public class ParticlesControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        a.transform.position=
-            new Vector3(GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.position.x,
-            GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.position.y,7);
-        a.transform.rotation=
-            GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.rotation;
+        a.transform.position = 
+            GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.position;
+            //new Vector3(GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.position.x,
+            //GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.position.y,7);
+        //a.transform.rotation=
+        //    GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.rotation;
 
         
     }
