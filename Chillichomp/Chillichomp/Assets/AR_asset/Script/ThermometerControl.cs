@@ -76,4 +76,14 @@ public class ThermometerControl : MonoBehaviour
         }
         return false;
     }
+
+    public void MaximizeLevel()
+    {
+        _level = 7;
+    }
+
+    public void NullifyLevel()
+    {
+        _level = 0;
+    }
 }

@@ -25,13 +25,17 @@ public class FoodControl : MonoBehaviour
     {
         TutorialManager tutorialManagerComponent = FindObjectOfType<TutorialManager>();
 
-        if (create && tutorialManagerComponent.TutorialSpecialState)
+        if (create && tutorialManagerComponent.TutorialSpecialState1)
+        {
+            Instantiate(_foodPrefabs[Random.Range(0, 2)]);
+            create = false;
+        }
+        else if (create && tutorialManagerComponent.TutorialSpecialState2)
         {
             Instantiate(_foodPrefabs[2]);
             create = false;
         }
-
-        if (create)
+        else if (create)
         {
             Instantiate(_foodPrefabs[RandomNumber(_foodCreateRate)]);
             create = false;
