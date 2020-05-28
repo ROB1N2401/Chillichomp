@@ -17,11 +17,16 @@ public class ParticlesControl : MonoBehaviour
     {
         a.transform.position = 
             GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.position;
-            //new Vector3(GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.position.x,
-            //GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.position.y,7);
+        //new Vector3(GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.position.x,
+        //GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.position.y,7);
         //a.transform.rotation=
         //    GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.rotation;
+        Vector3 f =
+            GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.rotation.eulerAngles;
+        print("Mouth_R " + f);
 
-        
+
+
+
     }
 }
