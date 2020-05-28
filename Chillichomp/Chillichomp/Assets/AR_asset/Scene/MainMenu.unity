@@ -112,12 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &30595011 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5451151163350350038, guid: f6933acaa688d3f40b0061184c735d2c,
-    type: 3}
-  m_PrefabInstance: {fileID: 5451151163370417941}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &30595012 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5451151163350350033, guid: f6933acaa688d3f40b0061184c735d2c,
@@ -426,16 +420,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 30595011}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1020380530}
+        m_MethodName: LaunchTutorial
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &131352059
 MonoBehaviour:
@@ -992,9 +986,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'How to play
-
-'
+  m_text: Play Tutorial
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -1063,10 +1055,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 774010650}
-    characterCount: 12
+    characterCount: 13
     spriteCount: 0
-    spaceCount: 3
-    wordCount: 3
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1

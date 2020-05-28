@@ -11,6 +11,11 @@ public class MainMenu : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void LaunchTutorial()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("AR_tutorial");
+    }
+
     public void QuitGame ()
     {
         Application.Quit();
