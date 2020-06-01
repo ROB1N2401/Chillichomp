@@ -92,10 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6322ab51e026b8243bc8e141bb41c8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _foodSpeed: 1.3
+  _allSprites:
+  - {fileID: 21300000, guid: 722d853dd96020849baf9651369dac39, type: 3}
+  - {fileID: 21300000, guid: 30a959c322af02d4e9d70f4e3b2d1b20, type: 3}
   _spiciness: 2
   _score: 2
-  _failAnimation:
-  - {fileID: 7590635646013859200, guid: 0576851d82816374cb8d3bcc6d4ba21d, type: 3}
-  - {fileID: 8707286194951362941, guid: 78a1c6ec93ffa3c4fa1a07573101c1f1, type: 3}
-  - {fileID: 4460759930962394896, guid: 20cc79b75b9d6904f9f3dee146ab98d1, type: 3}
+  _failAnimation: {fileID: 8707286194951362941, guid: 78a1c6ec93ffa3c4fa1a07573101c1f1,
+    type: 3}

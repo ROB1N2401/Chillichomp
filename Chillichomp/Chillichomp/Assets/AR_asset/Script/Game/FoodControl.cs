@@ -21,23 +21,13 @@ public class FoodControl : MonoBehaviour
         _foodCreateRate[1] = _medFoodRate;
         _foodCreateRate[2] = _strongFoodRate;
     }
+
     private void Update()
     {
-        TutorialManager tutorialManagerComponent = FindObjectOfType<TutorialManager>();
-
-        if (create && tutorialManagerComponent.TutorialSpecialState1)
-        {
-            Instantiate(_foodPrefabs[Random.Range(0, 2)]);
-            create = false;
-        }
-        else if (create && tutorialManagerComponent.TutorialSpecialState2)
-        {
-            Instantiate(_foodPrefabs[2]);
-            create = false;
-        }
-        else if (create)
+        if (create)
         {
             Instantiate(_foodPrefabs[RandomNumber(_foodCreateRate)]);
+            //Instantiate(_foodPrefabs[Random.Range(0,2)]);
             create = false;
         }
     }

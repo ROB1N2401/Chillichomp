@@ -21,7 +21,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private UnityEvent _boxEvent5 = null;
     [SerializeField] private GameObject _tutorialWindow = null;
     [SerializeField] private GameObject _headOutline = null;
-    [SerializeField] private FoodControl _foodControlComponent = null;
+    [SerializeField] private TutorialFoodControl _foodControlComponent = null;
     [SerializeField] private float _headOutlineShowcaseTime = 0f;
     private FoodMovement _foodMovementComponent = null;
     private Image _imageComponent = null;
@@ -33,7 +33,7 @@ public class TutorialManager : MonoBehaviour
         PlatesEaten = 0;
         TutorialSpecialState1 = false;
         TutorialSpecialState2 = false;
-        _foodControlComponent = FindObjectOfType<FoodControl>();
+        _foodControlComponent = GetComponent<TutorialFoodControl>();
         _foodControlComponent.enabled = false;
         _foodMovementComponent = FindObjectOfType<FoodMovement>();
         _imageComponent = _tutorialWindow.GetComponent<Image>();
@@ -137,7 +137,7 @@ public class TutorialManager : MonoBehaviour
         if(_currentBox == 1)
         {
             TutorialSpecialState1 = true;
-
+            GetComponent<TutorialFoodControl>().CreateFood();
             _boxEvent1.Invoke();
             _headOutline.SetActive(true);
             StartCoroutine(StartCountdown(_headOutlineShowcaseTime));
@@ -170,5 +170,10 @@ public class TutorialManager : MonoBehaviour
         _headOutline.SetActive(false);
         _boxEvent2.Invoke();
         SwitchBool();
+    }
+
+    public void EatOneDish()
+    {
+        PlatesEaten++;
     }
 }

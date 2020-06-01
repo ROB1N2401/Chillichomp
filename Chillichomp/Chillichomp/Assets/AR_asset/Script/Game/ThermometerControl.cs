@@ -33,10 +33,10 @@ public class ThermometerControl : MonoBehaviour
         }
         if(_level > 7)
         {
+            GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(false);
             _timer += Time.deltaTime;
-            if(_timer >= 7)
+            if(_timer >= 6)
             {
-                GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().SetFaceFilterState(false);
                 _timer = 0;
                 _level = 3;
             }

@@ -140,7 +140,7 @@
         public void DetectHeadShaking()
         {
             _headDirection = m_AugmentedFace.CenterPose.rotation.eulerAngles;
-            //print("head_direction " + _headDirection);
+            print("head_direction " + _headDirection);
             _timer += Time.deltaTime;
             _shakeHeads = false;
             if (_headDirection.y > 25 && _headDirection.y < 60)

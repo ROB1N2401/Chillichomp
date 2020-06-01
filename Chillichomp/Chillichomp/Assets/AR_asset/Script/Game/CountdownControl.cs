@@ -9,12 +9,10 @@ using System.Threading;
 
 public class CountdownControl : MonoBehaviour
 {
-    public float StartingTime;
-    //public string SceneName;
-    public TextMeshProUGUI Text;
-    public GameObject Victory;
-
-    [SerializeField] private GameObject _endMenu;
+    [SerializeField] private float _startingTimer;
+    [SerializeField] private TextMeshProUGUI _timeLdft;
+    [SerializeField] private GameObject _roundOver;
+    [SerializeField] private GameObject _finishMenu;
     [SerializeField] private GameObject _countdown;
     [SerializeField] private List<Sprite> _number;
     private float _timer = 0;
@@ -24,11 +22,11 @@ public class CountdownControl : MonoBehaviour
 
     void Start()
     {
-        Text.text = StartingTime.ToString();
+        _timeLdft.text = _startingTimer.ToString();
         _currentImage = 0;
         _timer = 0;
         _countdown.GetComponent<Image>().sprite = _number[_currentImage];
-        _endMenu.gameObject.SetActive(false);
+        _finishMenu.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,18 +40,18 @@ public class CountdownControl : MonoBehaviour
         }
         else
         {
-            if (StartingTime > 0)
+            if (_startingTimer > 0)
             {
-                StartingTime -= Time.deltaTime;
+                _startingTimer -= Time.deltaTime;
             }
 
-            Text.text = Mathf.Round(StartingTime).ToString();
+            _timeLdft.text = Mathf.Round(_startingTimer).ToString();
 
-            if (StartingTime <= 0)
+            if (_startingTimer <= 0)
             {
                 if (_instantiateVictoryCondition == true)
                 {
-                    GameObject f = Instantiate(Victory) as GameObject;
+                    GameObject f = Instantiate(_roundOver) as GameObject;
                     f.transform.position = Camera.main.transform.position;
                     GameObject.Find("Audio Source").GetComponent<AudioControl>().Final();
                     _instantiateVictoryCondition = false;
@@ -68,7 +66,7 @@ public class CountdownControl : MonoBehaviour
         yield return new WaitForSeconds(4.5f);
         Destroy(Text);
         Time.timeScale = 0f;
-        _endMenu.gameObject.SetActive(true);
+        _finishMenu.gameObject.SetActive(true);
     }
 
     private void _startCountdown()
@@ -91,11 +89,11 @@ public class CountdownControl : MonoBehaviour
             _timer = -0.3f;
         }       
         if(_currentImage==4)
-            {
-                _countdownAtBegin = false;
-                GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
-                return;
-            }
+        {
+            _countdownAtBegin = false;
+            GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
+            return;
+         }
     }
 
     IEnumerator ChangeNumber()
