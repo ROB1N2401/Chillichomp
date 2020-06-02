@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-   public void PlayGame ()
-   {
+    public void Tutorial()
+    {
         SceneManager.LoadScene("AR_tutorial");
+        Time.timeScale = 1f;
+    }
+    public void PlayGame ()
+    {
+        SceneManager.LoadScene("AR_prototype");
         Time.timeScale = 1f;
     }
 
