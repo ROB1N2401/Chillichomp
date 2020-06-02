@@ -1191,6 +1191,7 @@ GameObject:
   - component: {fileID: 293005460}
   - component: {fileID: 293005461}
   - component: {fileID: 293005463}
+  - component: {fileID: 293005464}
   m_Layer: 0
   m_Name: GameObjectControl
   m_TagString: Untagged
@@ -1387,6 +1388,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitRoofAnimation: {fileID: 1460346336}
+--- !u!114 &293005464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293005452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f7ab79a5d240842a146561d1fbeb04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _midFoodRate: 40
+  _medFoodRate: 40
+  _strongFoodRate: 20
+  _icons:
+  - {fileID: 5246593921906352568, guid: a9909f50906bb7149aab7cd3743de268, type: 3}
+  - {fileID: 8267260325420489594, guid: dcaef46970d2a714b998efecd0ab30fc, type: 3}
+  - {fileID: 578195469600420005, guid: 80d9536202f7c2747a51dc4824628a11, type: 3}
+  _queueBoxes:
+  - {fileID: 1202298753}
+  - {fileID: 685649727}
+  - {fileID: 900577794}
 --- !u!1 &451886800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,7 +1774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 900577794}
   m_Layer: 0
-  m_Name: 1st box
+  m_Name: 3rd box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2252,7 +2276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1202298753}
   m_Layer: 0
-  m_Name: 3rd box
+  m_Name: 1st box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
