@@ -124,7 +124,7 @@ public class TutorialManager : MonoBehaviour
 
         if(_currentBox == 5)
         {
-            SceneManager.LoadScene("AR_prototype");
+            SceneManager.LoadScene("MainMenu");
         }
 
         _currentBox += 1;
