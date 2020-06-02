@@ -31,7 +31,7 @@ public class FoodMovement : MonoBehaviour
             {
                 _timer = 0;
 
-                GameObject.Find("GameObjectControl").GetComponent<QueueSystem>().RefreshQueue();
+                //GameObject.Find("GameObjectControl").GetComponent<QueueSystem>().RefreshQueue();
                 GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().IncreaseScore(_score);
                 GameObject.Find("GameObjectControl").GetComponent<ThermometerControl>().AddLevel(_spiciness);
                 GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
@@ -43,7 +43,7 @@ public class FoodMovement : MonoBehaviour
         if (transform.position.y > -2.3f)
         {
             _timer = 0;
-            GameObject.Find("GameObjectControl").GetComponent<QueueSystem>().RefreshQueue();
+            //GameObject.Find("GameObjectControl").GetComponent<QueueSystem>().RefreshQueue();
             GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
             Instantiate(_failAnimation);
             Destroy(this.gameObject);

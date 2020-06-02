@@ -29,6 +29,7 @@ public class FoodControl : MonoBehaviour
         if (create)
         {
             //Instantiate(_foodPrefabs[RandomNumber(_foodCreateRate)]);
+            GameObject.Find("GameObjectControl").GetComponent<QueueSystem>().RefreshQueue();
             Instantiate(_foodPrefabs[_queueSystemComponent.Dishes[0]]);
             create = false;
         }
