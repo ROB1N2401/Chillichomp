@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using GoogleARCore.Examples.AugmentedFaces;
 using UnityEngine;
 using UnityEngine.UI;
-public class FoodMovement : MonoBehaviour
+public class TutorialFoodMovement : MonoBehaviour
 {
-    [SerializeField] private List<Sprite> _allSprites;
     [SerializeField] private int _spiciness;
     [SerializeField] private int _score;
 
@@ -18,8 +17,6 @@ public class FoodMovement : MonoBehaviour
     void Start()
     {
         transform.position = new Vector3(0, _timer - 7, 9);
-        int r=Random.Range(0, _allSprites.Count);
-        GetComponent<SpriteRenderer>().sprite = _allSprites[r];
         _speed = 1.2f;
     }
 
@@ -36,14 +33,15 @@ public class FoodMovement : MonoBehaviour
 
                 GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().IncreaseScore(_score);
                 GameObject.Find("GameObjectControl").GetComponent<ThermometerControl>().AddLevel(_spiciness);
-                GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
+                GameObject.Find("GameObjectControl").GetComponent<TutorialFoodControl>().CreateFood();
+                GameObject.Find("GameObjectControl").GetComponent<TutorialManager>().EatOneDish();
                 Destroy(this.gameObject);
             }
         }
         if (transform.position.y > -2.3f)
         {
             _timer = 0;
-            GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
+            GameObject.Find("GameObjectControl").GetComponent<TutorialFoodControl>().CreateFood();
             Instantiate(_failAnimation);
             Destroy(this.gameObject);
         }

@@ -15,13 +15,6 @@ public class ParticlesControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HitRoofAnimation.transform.position =
-            GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.position;
-
-        HitRoofAnimation.transform.rotation = 
-            GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.rotation;
-
-
         if (GetComponent<ThermometerControl>().CheckHitRoof())
         {
             HitRoofAnimation.SetActive(true);
@@ -30,6 +23,13 @@ public class ParticlesControl : MonoBehaviour
         {
             HitRoofAnimation.SetActive(false);
         }
+        HitRoofAnimation.transform.position =
+            GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.position;
+
+        HitRoofAnimation.transform.rotation = 
+            GameObject.Find("GameObjectControl").GetComponent<FaceFilterSwitch>().HeadPose.rotation;
+
+
 
 
 

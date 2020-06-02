@@ -18,13 +18,13 @@ public class ButtonControl : MonoBehaviour
 
     public void OnRestart()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        SceneManager.LoadScene("AR_prototype");
         Time.timeScale = 1f;
     }
 
     public void onMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1f;
     }
 

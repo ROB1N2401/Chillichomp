@@ -24,6 +24,7 @@ public class TutorialFoodControl : MonoBehaviour
 
     private void Update()
     {
+        print("guiopi");
         TutorialManager tutorialManagerComponent = FindObjectOfType<TutorialManager>();
         if (create && tutorialManagerComponent.TutorialSpecialState1)
         {

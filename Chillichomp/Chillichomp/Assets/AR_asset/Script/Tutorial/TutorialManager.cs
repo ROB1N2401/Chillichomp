@@ -52,8 +52,6 @@ public class TutorialManager : MonoBehaviour
         if (_currentBox == 1 && _isTrue)
         {
             //Debug.Log("TutorialManager: current condition is 1");
-
-            _arrows[0].SetActive(true);
         }
         else if (_currentBox == 2 && !_isTrue)
         {
@@ -62,6 +60,7 @@ public class TutorialManager : MonoBehaviour
 
             if (PlatesEaten >= 2)
             {
+                _arrows[0].SetActive(false);
                 _boxEvent3.Invoke();
                 SwitchBool();
             }
@@ -69,17 +68,16 @@ public class TutorialManager : MonoBehaviour
         else if (_currentBox == 2 && _isTrue)
         {
             //Debug.Log("TutorialManager: current condition is 3");
-
             _foodControlComponent.enabled = false;
-            _arrows[1].SetActive(true);
         }
         else if (_currentBox == 3 && !_isTrue)
         {
             //Debug.Log("TutorialManager: current condition is 4");
             //Debug.Log("Plates eaten: " + PlatesEaten);
-
+            
             if (PlatesEaten >= 4)
             {
+                _arrows[1].SetActive(false);
                 _foodControlComponent.enabled = false;
                 _boxEvent4.Invoke();
                 SwitchBool();
@@ -89,24 +87,22 @@ public class TutorialManager : MonoBehaviour
         {
             //Debug.Log("TutorialManager: current condition is 5");
 
-            _arrows[2].SetActive(true);
         }
         else if (_currentBox == 4 && !_isTrue)
         {
             //Debug.Log("TutorialManager: current condition is 6");
-
-            Water waterComponent = FindObjectOfType<Water>();
-            if (waterComponent.glassAmount_ < 3)
+            WaterControl waterComponent = FindObjectOfType<WaterControl>();
+            if (waterComponent.WaterAmount() < 3)
             {
+                _arrows[2].SetActive(false);
                 SwitchBool();
             }
         }
         else if (_currentBox == 5 && !_isTrue)
         {
             //Debug.Log("TutorialManager: current condition is 7"); 
-
+            //_arrows[2].SetActive(false);
             _foodControlComponent.enabled = true;
-
             ThermometerControl thermometerControlComponent = FindObjectOfType<ThermometerControl>();
             if (thermometerControlComponent._level > 7)
             {
@@ -128,7 +124,7 @@ public class TutorialManager : MonoBehaviour
 
         if(_currentBox == 5)
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("AR_prototype");
         }
 
         _currentBox += 1;
@@ -144,17 +140,18 @@ public class TutorialManager : MonoBehaviour
         }
         else if(_currentBox == 2)
         {
-            _arrows[0].SetActive(false);
+            _arrows[0].SetActive(true);
             _foodControlComponent.enabled = true;
         }
         else if (_currentBox == 3)
         {
-            _arrows[1].SetActive(false);
+            _arrows[1].SetActive(true);
             _foodControlComponent.enabled = true;
         }
         else if (_currentBox == 4)
         {
-            _arrows[2].SetActive(false);
+            _arrows[2].SetActive(true);
+
         }
         else if (_currentBox == 5)
         {

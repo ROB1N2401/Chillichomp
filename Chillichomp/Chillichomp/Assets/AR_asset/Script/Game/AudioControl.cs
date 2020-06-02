@@ -7,6 +7,8 @@ using UnityEngine;
 public class AudioControl : MonoBehaviour
 {
     private AudioSource _souce;
+
+    private bool _fall;
     private bool _chew;
     private bool _frenzy;
     private bool _drink;
@@ -16,6 +18,8 @@ public class AudioControl : MonoBehaviour
 
 
     //audio resource
+    public AudioClip Button;
+    public AudioClip Fall;
     public AudioClip Chewing;
     public AudioClip Fire;
     public AudioClip Water;
@@ -31,7 +35,12 @@ public class AudioControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_chew)
+        if (_fall)
+        {
+            _souce.PlayOneShot(Fall, 1f);
+            _fall = false;
+        }
+        if (_chew)
         {
             _souce.PlayOneShot(Chewing, 0.7f);
             _chew = false;
@@ -67,6 +76,15 @@ public class AudioControl : MonoBehaviour
     }
 
 
+
+    public void ClickButton()
+    {
+        _souce.PlayOneShot(Button, 1f);
+    }
+    public void DropOut()
+    {
+        _fall = true;
+    }
     public void EatFood()
     {
         _chew = true;

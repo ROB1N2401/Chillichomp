@@ -54,4 +54,8 @@ public class WaterControl : MonoBehaviour
         glassAmount_ -= 1;
     }
 
+    public int WaterAmount()
+    {
+        return glassAmount_;
+    }
 }

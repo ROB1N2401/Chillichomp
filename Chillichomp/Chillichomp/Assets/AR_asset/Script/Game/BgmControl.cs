@@ -6,6 +6,7 @@ public class BgmControl : MonoBehaviour
 {
     private AudioSource _souce1;
     private AudioSource _souce2;
+    public AudioClip _button;
     private void Start()
     {
         _souce1 = this.GetComponent<AudioSource>();
@@ -21,5 +22,10 @@ public class BgmControl : MonoBehaviour
     {
         _souce1.Play();
         _souce2.Play();
+    }
+
+    public void ClickButton()
+    {
+        _souce1.PlayOneShot(_button, 1f);
     }
 }
