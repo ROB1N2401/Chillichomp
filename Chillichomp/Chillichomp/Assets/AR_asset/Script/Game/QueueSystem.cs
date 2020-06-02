@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class QueueSystem : MonoBehaviour
 {
-    internal List<int> Dishes; //list of three upcoming types of food
+    internal List<int> Dishes = new List<int>(); //list of three upcoming types of food
 
     [SerializeField] private int _midFoodRate;
     [SerializeField] private int _medFoodRate;
