@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 295108888}
   - component: {fileID: 295108889}
   m_Layer: 5
-  m_Name: Music Slider
+  m_Name: BGMSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1269,7 +1269,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0.814, y: 1}
-  m_AnchoredPosition: {x: 10.209, y: 27.097}
+  m_AnchoredPosition: {x: 10.208984, y: 27.097}
   m_SizeDelta: {x: 2.4185486, y: 100.15237}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &534566398
@@ -2281,7 +2281,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0.814, y: 1}
-  m_AnchoredPosition: {x: 10.209, y: 27.097}
+  m_AnchoredPosition: {x: 10.208984, y: 27.097}
   m_SizeDelta: {x: 2.4185486, y: 100.15237}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1049922703
@@ -2665,7 +2665,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0.814, y: 1}
-  m_AnchoredPosition: {x: 10.209, y: 27.097}
+  m_AnchoredPosition: {x: 10.208984, y: 27.097}
   m_SizeDelta: {x: 2.4185486, y: 100.15237}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1083271794
@@ -3848,7 +3848,7 @@ GameObject:
   - component: {fileID: 1616802938}
   - component: {fileID: 1616802939}
   m_Layer: 5
-  m_Name: Master Slider
+  m_Name: masterSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4750,7 +4750,7 @@ GameObject:
   - component: {fileID: 2140941106}
   - component: {fileID: 2140941107}
   m_Layer: 5
-  m_Name: SFX Slider
+  m_Name: SFXSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
