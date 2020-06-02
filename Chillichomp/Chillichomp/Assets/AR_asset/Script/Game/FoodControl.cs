@@ -11,11 +11,13 @@ public class FoodControl : MonoBehaviour
     [SerializeField] private int _medFoodRate;
     [SerializeField] private int _strongFoodRate;
 
+    private QueueSystem _queueSystemComponent = null;
     private int[] _foodCreateRate;
     private bool create = false;
 
-    private void Start()
+    private void Awake()
     {
+        _queueSystemComponent = FindObjectOfType<QueueSystem>();
         _foodCreateRate = new int[_foodPrefabs.Count];
         _foodCreateRate[0] = _midFoodRate;
         _foodCreateRate[1] = _medFoodRate;
@@ -26,8 +28,8 @@ public class FoodControl : MonoBehaviour
     {
         if (create)
         {
-            Instantiate(_foodPrefabs[RandomNumber(_foodCreateRate)]);
-            //Instantiate(_foodPrefabs[Random.Range(0,2)]);
+            //Instantiate(_foodPrefabs[RandomNumber(_foodCreateRate)]);
+            Instantiate(_foodPrefabs[_queueSystemComponent.Dishes[0]]);
             create = false;
         }
     }

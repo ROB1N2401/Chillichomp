@@ -8,15 +8,12 @@ public class FoodMovement : MonoBehaviour
     [SerializeField] private List<Sprite> _allSprites;
     [SerializeField] private int _spiciness;
     [SerializeField] private int _score;
-    //[SerializeField] 
     private float _speed;
     [SerializeField] private GameObject _failAnimation;
-
     private float _timer = 0;
-    internal int PlatesEaten = 0;
 
     void Start()
-    {
+    { 
         transform.position = new Vector3(0, _timer - 7, 9);
         int r=Random.Range(0, _allSprites.Count);
         GetComponent<SpriteRenderer>().sprite = _allSprites[r];
@@ -34,6 +31,7 @@ public class FoodMovement : MonoBehaviour
             {
                 _timer = 0;
 
+                GameObject.Find("GameObjectControl").GetComponent<QueueSystem>().RefreshQueue();
                 GameObject.Find("GameObjectControl").GetComponent<ScoreControl>().IncreaseScore(_score);
                 GameObject.Find("GameObjectControl").GetComponent<ThermometerControl>().AddLevel(_spiciness);
                 GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
@@ -45,6 +43,7 @@ public class FoodMovement : MonoBehaviour
         if (transform.position.y > -2.3f)
         {
             _timer = 0;
+            GameObject.Find("GameObjectControl").GetComponent<QueueSystem>().RefreshQueue();
             GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
             Instantiate(_failAnimation);
             Destroy(this.gameObject);

@@ -91,6 +91,7 @@ public class CountdownControl : MonoBehaviour
         if(_currentImage==4)
         {
             _countdownAtBegin = false;
+            GameObject.Find("GameObjectControl").GetComponent<QueueSystem>().RefreshQueue();
             GameObject.Find("GameObjectControl").GetComponent<FoodControl>().CreateFood();
             return;
          }
