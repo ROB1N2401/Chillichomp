@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,39 +11,23 @@ public class FoodControl : MonoBehaviour
     [SerializeField] private int _medFoodRate;
     [SerializeField] private int _strongFoodRate;
 
-    //private QueueSystem _queueSystemComponent = null;
     private int[] _foodCreateRate;
     private bool create = false;
 
-    public int[] FoodOrder;
-
-    private void Awake()
+    private void Start()
     {
-        //_queueSystemComponent = FindObjectOfType<QueueSystem>();
         _foodCreateRate = new int[_foodPrefabs.Count];
-        FoodOrder = new int[3];
         _foodCreateRate[0] = _midFoodRate;
         _foodCreateRate[1] = _medFoodRate;
         _foodCreateRate[2] = _strongFoodRate;
-        for (int a = 0; a > 2; a++)
-        {
-            FoodOrder[a] = RandomNumber(_foodCreateRate);
-        }
     }
 
     private void Update()
     {
         if (create)
         {
-            print("Order " + FoodOrder[0]);
-            Instantiate(_foodPrefabs[FoodOrder[0]]);
-            //Instantiate(_foodPrefabs[_queueSystemComponent.Dishes[0]]);
-            {
-                FoodOrder[0] = FoodOrder[1];
-                FoodOrder[1] = FoodOrder[2];
-                FoodOrder[2] = RandomNumber(_foodCreateRate);
-            }
-            print("Orders " + FoodOrder);
+            Instantiate(_foodPrefabs[RandomNumber(_foodCreateRate)]);
+            //Instantiate(_foodPrefabs[Random.Range(0,2)]);
             create = false;
         }
     }
